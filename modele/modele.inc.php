@@ -55,7 +55,7 @@ class PdoExemple{
         
         
         
-/* Exemple pouraccèder à la base de données        
+/* Exemple pour accèder à la base de données
         
    public function getInfosVisiteur($login,$mdp){
        // retourne les informations sur le visiteur (la table utilisateur)
