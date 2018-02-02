@@ -38,9 +38,12 @@
         <br>
         <label for="etablissementEleve">Etablissement:</label>
         <select name="etablissementEleve" required >
-            <option>Choisir un établissment</option>
-            <option>Etablissement1</option>
-            <option>Etablissement2</option>
+            <option>Choisir un établissement</option>
+            <?php
+            for ($i = 0; $i < sizeof($listEtab); $i++) {
+                echo'<option>' . $listEtab[$i][nom] . '</option>';
+            }
+            ?>
         </select>
         <br>
         <label for="classeEleve">Classe:</label>
@@ -64,9 +67,11 @@
         <input type="email" name="emailAVS" value="" placeholder="xyz@gmail.com" required />
         <br>
         <select name="eleveAssigneAVS" multiple>
-            <option>Eleve1</option>
-            <option>Eleve2</option>
-            <option>Eleve3</option>
+              <?php
+            for ($i = 0; $i < sizeof($listEleve); $i++) {
+                echo'<option id='.$listEleve[$i][id_eleve].'>' . $listEleve[$i][nom] . '</option>';
+            }
+            ?>
         </select>
         <br>
         <br>

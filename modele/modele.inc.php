@@ -57,7 +57,7 @@ class PdoExemple {
 
 // Exemple pour accèder à la base de données
 
-    public function ajouterEtablissement($nomEtablissement, $typeEtablissement, $responsable) {
+    public function insertEtablissement($nomEtablissement, $typeEtablissement, $responsable) {
 
 // retourne les informations sur le visiteur (la table utilisateur)
         $req = "INSERT INTO `etablissement`(`nom`, `type_etablissement`, `responsable_etablissement`) VALUES (:nomEtablissement,:typeEtablissement,:responsable)";
@@ -72,53 +72,82 @@ class PdoExemple {
         $prep->execute();
 
         if ($prep->errorInfo()[1] != null) {
-                PdoExemple::$resultat = 0;
-            }
-            
-            return PdoExemple::$resultat;
+            PdoExemple::$resultat = 0;
+        }
+
+        return PdoExemple::$resultat;
     }
 
-
-    public function ajouterEleve($nomEleve, $prenemEleve, $date_NaissanceEleve) {
+    public function insertEleve($nomEleve, $prenomEleve, $date_NaissanceEleve) {
         // retourne un tableau associatif contenant tous les projets
 
-        $req = "insert into eleve ('nom', 'prenom', 'date_naissance') VALUES (:nomEleve, :nomEtablissement, :date_naissance)";
+        $req = "INSERT INTO eleve(nom, prenom, date_naissance) VALUES(:nomEleve, :prenomEleve, :date_naissanceEleve)";
 
         $prep = PdoExemple::$monPdo->prepare($req);
         $prep->bindValue(':nomEleve', $nomEleve, PDO::PARAM_STR);
-        $prep->bindValue(':nomEtablissement', $nomEtablissement, PDO::PARAM_STR);
-        $prep->bindValue(':date_naissance', $date_naissance PDO::PARAM_STR);
+        $prep->bindValue(':prenomEleve', $prenomEleve, PDO::PARAM_STR);
+        $prep->bindValue(':date_naissanceEleve', $date_NaissanceEleve, PDO::PARAM_STR);
         $prep->execute();
 
         if ($prep->errorInfo()[1] != null) {
-                PdoExemple::$resultat = 0;
-            }
-            
-           
- 
-        // ou return $this->_pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+            PdoExemple::$resultat = 0;
+        }
+        return PdoExemple::$resultat;
     }
 
-    /*
-      public function getLesEmployes(){
+    public function selectEtablissement() {
 
-      $req="select nom,prenom from employeinformaticien";
-      $rs = PdoExemple::$monPdo->query($req);
-      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
-      return $ligne;
+        $req = "SELECT `id_etablissement`, `nom`, `type_etablissement`, `responsable_etablissement` FROM `etablissement`";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
 
-      }
+    public function insertClasse($nomClasse) {
 
-      public function getLesProjetsDetails() {
-      // retourne un tableau associatif contenant tous les projets
-      $req="select ei.codeprojet,nomprojet,dureeprevue,nom,prenom from projet p inner join employeinformaticien ei where ei.codeprojet = p.codeprojet";
-      $rs = PdoExemple::$monPdo->query($req);
-      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
-      return $ligne;
-      // ou return $this->_pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-      }
 
-     */
+        $req = "INSERT INTO `classe`(`nom`) VALUES (:nomClasse)";
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+        $prep->bindValue(':nomClasse', $nomClasse, PDO::PARAM_STR);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+            PdoExemple::$resultat = 0;
+        }
+        return PdoExemple::$resultat;
+    }
+    
+    
+     public function insertAVS($nomAVS, $prenomAVS, $date_NaissanceAVS,$mailAVS) {
+        // retourne un tableau associatif contenant tous les projets
+
+        $req = "INSERT INTO `avs`(`nom`, `prenom`, `date_naissance`, `mail`, `Annee`) VALUES (:nomAVS,:prenomAVS,:date_NaissanceAVS,:mailAVS,:anneeAVS)";
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+        $prep->bindValue(':nomAVS', $nomAVS, PDO::PARAM_STR);
+        $prep->bindValue(':prenomAVS', $prenomAVS, PDO::PARAM_STR);
+        $prep->bindValue(':date_NaissanceAVS', $date_NaissanceAVS, PDO::PARAM_STR);
+        $prep->bindValue(':mailAVS', $mailAVS, PDO::PARAM_STR);
+        $prep->bindValue(':anneeAVS', date("Y"), PDO::PARAM_STR);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+            PdoExemple::$resultat = 0;
+        }
+        return PdoExemple::$resultat;
+    }
+    
+     public function selectEleve() {
+
+        $req = "SELECT `id_eleve`, `nom`, `prenom`, `date_naissance`, `id_avs` FROM `eleve`";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+    
+    
+
 }
 
 ?>
