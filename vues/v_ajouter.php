@@ -12,15 +12,15 @@
         <label class="radio"  for="rbAVS">AVS</label>
     </center>
 
-    <form name="ajouterEtablissement"  id="ajouterEtablissement"  action="../index.php?do=ajouter&action=ajouterEtablissement" method="POST">
-        <label for="nomEtab">Nom:</label>
-        <input type="text" name="nomEtab" value="" required/>
+    <form name="ajouterEtablissement"  id="ajouterEtablissement"  action="index.php?do=ajouter&action=ajouterEtablissement" method="POST">
+        <label for="nomEtablissement">Nom:</label>
+        <input type="text" name="nomEtablissement" value="" required/>
         <br>
         <label for="typeEtablissement">Type établissement:</label>
         <input type="text" name="typeEtablissement" value="" required />
         <br>
-        <label for="responsableEtab">Responsable:</label>
-        <input type="text" name="responsableEtab" value="" required />
+        <label for="responsableEtablissement">Responsable:</label>
+        <input type="text" name="responsableEtablissement" value="" required />
         <br>
         <input type="submit" value="Sauvegarder" name="envoyerEtab" />
     </form>

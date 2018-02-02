@@ -22,6 +22,7 @@ class PdoExemple {
     private static $mdp = '';
     private static $monPdo;
     private static $monPdoExemple = null;
+    private static $resultat = 1;
 
     /**
      * Constructeur privé, crée l'instance de PDO qui sera sollicitée
@@ -54,24 +55,39 @@ class PdoExemple {
         return PdoExemple::$monPdoExemple;
     }
 
-    /* Exemple pour accèder à la base de données
+// Exemple pour accèder à la base de données
 
-      public function getInfosVisiteur($login,$mdp){
-      // retourne les informations sur le visiteur (la table utilisateur)
-      $req="select nom,prenom,login,mdp from employeinformaticien where login ='".$login."' and mdp='".$mdp."' ";
-      $rs = PdoExemple::$monPdo->query($req);
-      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
-      //array($ligne["login"], $ligne["mdp"]);
-      return $ligne;
-      }
-      public function getLesProjets() {
-      // retourne un tableau associatif contenant tous les projets
-      $req="select codeprojet,nomprojet,dureeprevue from projet";
-      $rs = PdoExemple::$monPdo->query($req);
-      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
-      return $ligne;
-      // ou return $this->_pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-      }
+    public function ajouterEtablissement($nomEtablissement, $typeEtablissement, $responsable) {
+
+// retourne les informations sur le visiteur (la table utilisateur)
+        $req = "INSERT INTO `etablissement`(`nom`, `type_etablissement`, `responsable_etablissement`) VALUES (:nomEtablissement,:typeEtablissement,:responsable)";
+
+
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+
+        $prep->bindValue(':nomEtablissement', $nomEtablissement, PDO::PARAM_STR);
+        $prep->bindValue(':typeEtablissement', $typeEtablissement, PDO::PARAM_STR);
+        $prep->bindValue(':responsable', $responsable, PDO::PARAM_STR);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+                PdoExemple::$resultat = 0;
+            }
+            
+            return PdoExemple::$resultat;
+    }
+
+    public function getLesProjets() {
+        // retourne un tableau associatif contenant tous les projets
+        $req = "select codeprojet,nomprojet,dureeprevue from projet";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+        // ou return $this->_pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /*
       public function getLesEmployes(){
 
       $req="select nom,prenom from employeinformaticien";
