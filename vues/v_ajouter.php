@@ -25,7 +25,7 @@
         <input type="submit" value="Sauvegarder" name="envoyerEtab" />
     </form>
 
-    <form name="ajouterEleve" id="ajouterEleve" style="display: none;" action="../index.php?do=ajouter&action=ajouterEleve" method="POST">
+    <form name="ajouterEleve" id="ajouterEleve" style="display: none;" action="index.php?do=ajouter&action=ajouterEleve" method="POST">
         <label for="nomEleve">Nom:</label>
         <input type="text" name="nomEleve" value="" required />
         <br>
@@ -50,7 +50,7 @@
         <input type="submit" value="Sauvegarder" name="envoyerEleve" />
     </form>
 
-    <form name="ajouterAVS" id="ajouterAVS" style="display: none;" action="../index.php?do=ajouter&action=ajouterAVS" method="POST">
+    <form name="ajouterAVS" id="ajouterAVS" style="display: none;" action="index.php?do=ajouter&action=ajouterAVS" method="POST">
         <label for="nomAVS">Nom:</label>
         <input type="text" name="nomAVS" value="" required />
         <br>

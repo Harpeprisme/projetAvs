@@ -78,12 +78,24 @@ class PdoExemple {
             return PdoExemple::$resultat;
     }
 
-    public function getLesProjets() {
+
+    public function ajouterEleve($nomEleve, $prenemEleve, $date_NaissanceEleve) {
         // retourne un tableau associatif contenant tous les projets
-        $req = "select codeprojet,nomprojet,dureeprevue from projet";
-        $rs = PdoExemple::$monPdo->query($req);
-        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
-        return $ligne;
+
+        $req = "insert into eleve ('nom', 'prenom', 'date_naissance') VALUES (:nomEleve, :nomEtablissement, :date_naissance)";
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+        $prep->bindValue(':nomEleve', $nomEleve, PDO::PARAM_STR);
+        $prep->bindValue(':nomEtablissement', $nomEtablissement, PDO::PARAM_STR);
+        $prep->bindValue(':date_naissance', $date_naissance PDO::PARAM_STR);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+                PdoExemple::$resultat = 0;
+            }
+            
+           
+ 
         // ou return $this->_pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 

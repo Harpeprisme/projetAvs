@@ -29,7 +29,12 @@ switch ($action) {
             break;
         }
     case 'ajouterEleve': {
-            $pdo->ajouterEleve();
+    		$nomEleve = $_REQUEST['nomEleve'];
+    		$prenomEleve = $_REQUEST['prenomEleve'];
+    		$datenaissanceEleve = $_REQUEST['date_naissanceEleve'];
+    		$etablissementEleve = $_REQUEST['etablissementEleve'];
+    		$classeEleve = $_REQUEST['classeEleve'];
+            $pdo->ajouterEleve($nomEleve, $prenomEleve, $date_naissanceEleve);
             include("vues/v_ajouter.php");
             break;
         }
