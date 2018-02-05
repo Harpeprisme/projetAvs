@@ -6,9 +6,9 @@
     <center>
         <input  type="radio" name="rb" id="rbEtablissement" checked="true" onclick="affEtab();" />
         <label class="radio"  for="rbEtablissement">Etablissement</label>
-        <input   type="radio" name="rb" id="rbEleve" onclick="affEtab();" />
+        <input   type="radio" name="rb" id="rbEleve" onclick="affEtab();"/>
         <label class="radio"for="rbEleve">Eleve</label>
-        <input type="radio" name="rb" id="rbAVS" onclick="affEtab();"/>
+        <input type="radio" name="rb" id="rbAVS" onclick="affEtab();" />
         <label class="radio"  for="rbAVS">AVS</label>
     </center>
 
@@ -50,7 +50,7 @@
         <input type="text" name="classeEleve" value="" required />
         <br>
 
-        <input type="submit" value="Sauvegarder" name="envoyerEleve" />
+        <input type="submit" value="Sauvegarder" name="envoyerEleve"/>
     </form>
 
     <form name="ajouterAVS" id="ajouterAVS" style="display: none;" action="index.php?do=ajouter&action=ajouterAVS" method="POST">
@@ -69,7 +69,7 @@
         <select name="eleveAssigneAVS" multiple>
               <?php
             for ($i = 0; $i < sizeof($listEleve); $i++) {
-                echo'<option id='.$listEleve[$i][id_eleve].'>' . $listEleve[$i][nom] . '</option>';
+                echo'<option id='.$listEleve[$i][id_eleve].'>' . $listEleve[$i][nom] ." ". $listEleve[$i][prenom] . '</option>';
             }
             ?>
         </select>

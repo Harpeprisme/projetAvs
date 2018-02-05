@@ -11,13 +11,15 @@ if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'afficherAjouter';
 }
 
-$listEleve = $pdo->selectEleve();
-$listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
+
 
 $action = $_REQUEST['action'];
 switch ($action) {
 
     case 'afficherAjouter': {
+        
+        $listEleve = $pdo->selectEleve();
+        $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
           
             include("vues/v_ajouter.php");
 
@@ -25,16 +27,23 @@ switch ($action) {
         }
     case 'ajouterEtablissement': {
 
+        $listEleve = $pdo->selectEleve();
+        $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
+
 
 
             $nomEtablissement = $_REQUEST['nomEtablissement'];
             $typeEtablissement = $_REQUEST['typeEtablissement'];
             $responsable = $_REQUEST['responsableEtablissement'];
             $pdo->insertEtablissement($nomEtablissement, $typeEtablissement, $responsable);
+            $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosbouto
             include("vues/v_ajouter.php");
             break;
         }
     case 'ajouterEleve': {
+
+        $listEleve = $pdo->selectEleve();
+        $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
 
             $nomEleve = $_REQUEST['nomEleve'];
             $prenomEleve = $_REQUEST['prenomEleve'];
@@ -46,11 +55,14 @@ switch ($action) {
             $pdo->insertClasse($classeEleve);
             
 
-
+            $listEleve = $pdo->selectEleve();
             include("vues/v_ajouter.php");
             break;
         }
     case 'ajouterAVS': {
+
+        $listEleve = $pdo->selectEleve();
+        $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
 
 
             $nomAVS = $_REQUEST['nomAVS'];
@@ -60,7 +72,6 @@ switch ($action) {
             $pdo->insertAVS($nomAVS, $prenomAVS, $date_NaissanceAVS, $mailAVS);
 
             // REQUUeête foreign key eleve
-
 
             include("vues/v_ajouter.php");
             break;
