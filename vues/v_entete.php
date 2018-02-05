@@ -11,7 +11,9 @@
         <link rel="stylesheet" type="text/css" href="styles/css_accueil.css" />
         <link rel="stylesheet" type="text/css" href="styles/css_form.css" />
         <link rel="stylesheet" type="text/css" href="styles/css_ajouter.css" />
+        <link rel="stylesheet" type="text/css" href="styles/css_informations.css" />
         <script type="text/javascript" src="js/js_ajouter.js"></script>
+        <script type="text/javascript" src="js/js_informations.js"></script>
 
         <link href='http://fonts.googleapis.com/css?family=Terminal+Dosis' rel='stylesheet' type='text/css' />
         <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">

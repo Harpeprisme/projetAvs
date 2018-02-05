@@ -138,6 +138,14 @@ class PdoExemple {
         return PdoExemple::$resultat;
     }
     
+    public function selectAVS() {
+
+        $req = "SELECT * FROM `avs`";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+
      public function selectEleve() {
 
         $req = "SELECT `id_eleve`, `nom`, `prenom`, `date_naissance`, `id_avs` FROM `eleve`";
