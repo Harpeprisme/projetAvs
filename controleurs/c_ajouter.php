@@ -57,6 +57,7 @@ switch ($action) {
 
             $listEleve = $pdo->selectEleve();
             include("vues/v_ajouter.php");
+            
             break;
         }
     case 'ajouterAVS': {
