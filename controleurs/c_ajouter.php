@@ -81,7 +81,6 @@ switch ($action) {
 
                     //Insère dans la table gere les etblissements des avs
                     $etblissementEleve = $pdo->selectEtablissementEleve($idEleve);
-                    var_dump($etblissementEleve);
                     $pdo->insertGere($idMaxAvs, $etblissementEleve);
                 }
             }
