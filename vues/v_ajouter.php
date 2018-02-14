@@ -1,6 +1,11 @@
 
 
 <div class="center-on-page">
+    
+    
+<div class="col alert alert-primary" role="alert">
+  Test
+</div>
 
     <h1>Ajouter</h1>
     <center>
@@ -41,7 +46,7 @@
             <option>Choisir un établissement</option>
             <?php
             for ($i = 0; $i < sizeof($listEtab); $i++) {
-                echo'<option>' . $listEtab[$i][nom] . '</option>';
+                echo'<option id='.$listEtab[$i][id_etablissement].' value='.$listEtab[$i][id_etablissement].'>' . $listEtab[$i][nom] . '</option>';
             }
             ?>
         </select>
@@ -66,10 +71,10 @@
         <label for="emailAVS">Email:</label>
         <input type="email" name="emailAVS" value="" placeholder="xyz@gmail.com" required />
         <br>
-        <select name="eleveAssigneAVS" multiple>
+        <select name="eleveAssigneAVS[]" multiple>
               <?php
             for ($i = 0; $i < sizeof($listEleve); $i++) {
-                echo'<option id='.$listEleve[$i][id_eleve].'>' . $listEleve[$i][nom] ." ". $listEleve[$i][prenom] . '</option>';
+                echo'<option id='.$listEleve[$i][id_eleve].' value='.$listEleve[$i][id_eleve].'>' . $listEleve[$i][nom] ." ". $listEleve[$i][prenom] . '</option>';
             }
             ?>
         </select>

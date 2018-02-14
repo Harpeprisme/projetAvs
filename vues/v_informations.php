@@ -9,6 +9,11 @@
         <input type="radio" name="rb" id="ibAVS" onclick="affEtabInfo();"/>
         <label class="radio"  for="ibAVS">AVS</label>
     </center>
+    
+    <select name="test" size="6" multiple="multiple">
+        <option>sdsqdqsd</option>
+        <option>sdqsdsq</option>
+    </select>
      <form name="infoEtablissement"  id="infoEtablissement">
         <select name="nom" size="10">
         <?php

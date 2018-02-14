@@ -117,9 +117,8 @@ class PdoExemple {
         }
         return PdoExemple::$resultat;
     }
-    
-    
-     public function insertAVS($nomAVS, $prenomAVS, $date_NaissanceAVS,$mailAVS) {
+
+    public function insertAVS($nomAVS, $prenomAVS, $date_NaissanceAVS, $mailAVS) {
         // retourne un tableau associatif contenant tous les projets
 
         $req = "INSERT INTO `avs`(`nom`, `prenom`, `date_naissance`, `mail`, `Annee`) VALUES (:nomAVS,:prenomAVS,:date_NaissanceAVS,:mailAVS,:anneeAVS)";
@@ -137,7 +136,7 @@ class PdoExemple {
         }
         return PdoExemple::$resultat;
     }
-    
+
     public function selectAVS() {
 
         $req = "SELECT * FROM `avs`";
@@ -146,15 +145,72 @@ class PdoExemple {
         return $ligne;
     }
 
-     public function selectEleve() {
+    public function selectEleve() {
 
         $req = "SELECT `id_eleve`, `nom`, `prenom`, `date_naissance`, `id_avs` FROM `eleve`";
         $rs = PdoExemple::$monPdo->query($req);
         $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
         return $ligne;
     }
+
+    public function selectMaxEleve() {
+
+        $req = "SELECT max(id_eleve) as maxEleve from eleve";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne['maxEleve'];
+    }
+
+    public function selectMaxClasse() {
+
+        $req = "SELECT max(id_classe) as maxClasse from classe";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne['maxClasse'];
+    }
     
+    public function selectMaxAVS() {
+
+        $req = "SELECT max(id_avs) as maxAvs from AVS";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne['maxAvs'];
+    }
     
+    public function insertAppartient($idEtablissementEleve, $idEleve, $idClasse) {
+        
+        $req = "INSERT INTO `appartient`(`id_etablissement`, `id_eleve`, `id_classe`) VALUES (:idEtablissementEleve,:idEleve,:idClasse)";
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+        $prep->bindValue(':idEtablissementEleve', $idEtablissementEleve, PDO::PARAM_INT);
+        $prep->bindValue(':idEleve', $idEleve, PDO::PARAM_INT);
+        $prep->bindValue(':idClasse', $idClasse,PDO::PARAM_INT);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+            PdoExemple::$resultat = 0;
+        }
+        return PdoExemple::$resultat;
+        
+    }
+    
+    public function updateEleve($idMaxAvs, $idEleve) {
+        
+        
+        
+        $req = "UPDATE `eleve` SET `id_avs` = :idMaxAvs  WHERE `id_eleve`= :idEleve";
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+        $prep->bindValue(':idMaxAvs', $idMaxAvs, PDO::PARAM_INT);
+        $prep->bindValue(':idEleve', $idEleve, PDO::PARAM_INT);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+            PdoExemple::$resultat = 0;
+        }
+        return PdoExemple::$resultat;
+        
+    }
 
 }
 

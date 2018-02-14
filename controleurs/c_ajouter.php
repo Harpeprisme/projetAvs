@@ -17,18 +17,18 @@ $action = $_REQUEST['action'];
 switch ($action) {
 
     case 'afficherAjouter': {
-        
-        $listEleve = $pdo->selectEleve();
-        $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
-          
+
+            $listEleve = $pdo->selectEleve();
+            $listEtab = $pdo->selectEtablissement(); // à enlever par la suite lors du blocage des radiosboutons
+
             include("vues/v_ajouter.php");
 
             break;
         }
     case 'ajouterEtablissement': {
 
-        $listEleve = $pdo->selectEleve();
-        $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
+            $listEleve = $pdo->selectEleve();
+            $listEtab = $pdo->selectEtablissement(); // à enlever par la suite lors du blocage des radiosboutons
 
 
 
@@ -36,45 +36,73 @@ switch ($action) {
             $typeEtablissement = $_REQUEST['typeEtablissement'];
             $responsable = $_REQUEST['responsableEtablissement'];
             $pdo->insertEtablissement($nomEtablissement, $typeEtablissement, $responsable);
-            $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosbouto
+            $listEtab = $pdo->selectEtablissement(); // à enlever par la suite lors du blocage des radiosbouto
             include("vues/v_ajouter.php");
             break;
         }
     case 'ajouterEleve': {
 
-        $listEleve = $pdo->selectEleve();
-        $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
+            $listEleve = $pdo->selectEleve();
+            $listEtab = $pdo->selectEtablissement(); // à enlever par la suite lors du blocage des radiosboutons
 
             $nomEleve = $_REQUEST['nomEleve'];
             $prenomEleve = $_REQUEST['prenomEleve'];
             $datenaissanceEleve = $_REQUEST['dateNaissanceEleve'];
-            $etablissementEleve = $_REQUEST['etablissementEleve'];
+            $idEtablissementEleve = $_REQUEST['etablissementEleve'];
+
+
             $classeEleve = $_REQUEST['classeEleve'];
 
             $pdo->insertEleve($nomEleve, $prenomEleve, $datenaissanceEleve);
+            $idEleve = $pdo->selectMaxEleve();
+
             $pdo->insertClasse($classeEleve);
-            
+            $idClasse = $pdo->selectMaxClasse();
+
+            $pdo->insertAppartient($idEtablissementEleve, $idEleve, $idClasse);
+
 
             $listEleve = $pdo->selectEleve();
             include("vues/v_ajouter.php");
-            
+
             break;
         }
     case 'ajouterAVS': {
 
-        $listEleve = $pdo->selectEleve();
-        $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
+
+
+
+
+            $listEleve = $pdo->selectEleve();
+            $listEtab = $pdo->selectEtablissement(); // à enlever par la suite lors du blocage des radiosboutons
 
 
             $nomAVS = $_REQUEST['nomAVS'];
             $prenomAVS = $_REQUEST['PrenomAVS'];
             $date_NaissanceAVS = $_REQUEST['dateNaissanceAVS'];
             $mailAVS = $_REQUEST['emailAVS'];
-            $pdo->insertAVS($nomAVS, $prenomAVS, $date_NaissanceAVS, $mailAVS);
+            $idEleve = $_REQUEST['eleveAssigneAVS'];
+            $pdo->insertAVS($nomAVS, $prenomAVS, $date_NaissanceAVS, $mailAVS, $idEleve);
+            
+            $idMaxAvs = $pdo->selectMaxAVS();
 
-            // REQUUeête foreign key eleve
+            if (isset($idEleve)) 
+                {
+                for ($i = 0; $i < sizeof($_REQUEST['eleveAssigneAVS']); $i++) {
 
+                    $idEleve = $_REQUEST['eleveAssigneAVS'][$i];
+                    $pdo->updateEleve($idMaxAvs, $idEleve);
+                }
+                
+                
+                
+                $etblissementEleve = $pdo->selectEtablissementEleve($idEleve);
+                $pdo->insertGere($idMaxAvs,$etblissementEleve);
+            }
+            
+           
+            
             include("vues/v_ajouter.php");
             break;
         }
-}
+}        
