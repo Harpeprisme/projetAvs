@@ -168,7 +168,7 @@ class PdoExemple {
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
         return $ligne['maxClasse'];
     }
-    
+
     public function selectMaxAVS() {
 
         $req = "SELECT max(id_avs) as maxAvs from AVS";
@@ -176,33 +176,56 @@ class PdoExemple {
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
         return $ligne['maxAvs'];
     }
-    
+
     public function insertAppartient($idEtablissementEleve, $idEleve, $idClasse) {
-        
+
         $req = "INSERT INTO `appartient`(`id_etablissement`, `id_eleve`, `id_classe`) VALUES (:idEtablissementEleve,:idEleve,:idClasse)";
 
         $prep = PdoExemple::$monPdo->prepare($req);
         $prep->bindValue(':idEtablissementEleve', $idEtablissementEleve, PDO::PARAM_INT);
         $prep->bindValue(':idEleve', $idEleve, PDO::PARAM_INT);
-        $prep->bindValue(':idClasse', $idClasse,PDO::PARAM_INT);
+        $prep->bindValue(':idClasse', $idClasse, PDO::PARAM_INT);
         $prep->execute();
 
         if ($prep->errorInfo()[1] != null) {
             PdoExemple::$resultat = 0;
         }
         return PdoExemple::$resultat;
-        
     }
-    
+
     public function updateEleve($idMaxAvs, $idEleve) {
-        
-        
-        
+
+
+
         $req = "UPDATE `eleve` SET `id_avs` = :idMaxAvs  WHERE `id_eleve`= :idEleve";
 
         $prep = PdoExemple::$monPdo->prepare($req);
         $prep->bindValue(':idMaxAvs', $idMaxAvs, PDO::PARAM_INT);
         $prep->bindValue(':idEleve', $idEleve, PDO::PARAM_INT);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+            PdoExemple::$resultat = 0;
+        }
+        return PdoExemple::$resultat;
+    }
+
+    public function selectEtablissementEleve($idEleve) {
+
+        $req = "SELECT id_classe from appartient where id_eleve =".$idEleve ;
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne['id_classe'];
+  
+    }
+    
+    public function insertGere($idMaxAvs, $etblissementEleve) {
+        
+         $req = "INSERT INTO `gere`(`id_avs`, `id_etablissement`) VALUES (:idMaxAvs,:etblissementEleve)";
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+        $prep->bindValue(':idMaxAvs', $idMaxAvs, PDO::PARAM_INT);
+        $prep->bindValue(':etblissementEleve', $etblissementEleve, PDO::PARAM_INT);
         $prep->execute();
 
         if ($prep->errorInfo()[1] != null) {
