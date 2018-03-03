@@ -22,6 +22,7 @@
 
         <script type="text/javascript" src="js/js_ajouter.js"></script>
         <script type="text/javascript" src="js/js_informations.js"></script>
+        <script type="text/javascript" src="js/js_modifier.js"></script>
 
         <title>Gestion des Avs</title>
     </head>

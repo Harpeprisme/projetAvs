@@ -5,7 +5,7 @@ function affEtabModif()
     {
         document.getElementById('modifierEtablissement').style.display = "";
         document.getElementById('modifierEleve').style.display = "none";
-        document.getElementById('ajouterAVS').style.display = "none";
+        document.getElementById('modifierAVS').style.display = "none";
         
     } 
     else if (document.getElementById('rbEleve').checked == true)
