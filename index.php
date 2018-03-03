@@ -1,8 +1,9 @@
 <?php
-
+session_start();
 require_once("modele/modele.inc.php");
 include("vues/v_entete.php");
-session_start();
+
+
 // on se connecte et creation de la variable statique $pdo
 
 $pdo = PdoExemple::getPdoExemple();
