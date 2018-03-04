@@ -2,15 +2,13 @@
 
 
     <div class="row">
-        <div class="col">
-        </div>
+        <div class="col"></div>
         <div class="col">     
             <h1>Modifier</h1>
         </div>  
-        <div class="col">
-        </div>
+        <div class="col"> </div>
     </div>
-
+    <!--Debut Radios Boutons -->
     <div class="row">
         <div class ="col">   
         </div>
@@ -26,240 +24,158 @@
         </div>
 
     </div>
-    <!--fin des rb-->
-
+    <!--fin Radios Boutons -->
+    <!--Début Modifier Etablissement-->
     <form class="navbar-form navbar-left form" role="search" id="modifierEtablissement" action="index.php?do=modifier&action=mofifierEtablissement" method="POST">
+        <div class="row col"> 
+
+            <div class ="col">
+                <input type="text" id="searchEtablissement" class="form-control" placeholder="Search">
+
+                <select id="listeEtablissement" formname="Etablissement[]" multiple>
+                    <?php
+                    if (isset($selectEtablissement)) {
+                        for ($i = 0; $i < sizeof($selectEtablissement); $i++) {
+                            echo'<option id=' . $selectEtablissement[$i][id_etablissement] . ' value=' . $selectEtablissement[$i][id_etablissement] . '>' . $selectEtablissement[$i][nom] . '</option>';
+                        }
+                    } else {
+                        echo'<option>Il n\'y a aucun établissement</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <div class="col-sm-9">
+                <div class="row ">
+                    <label class="col" for="nomEtablissement"> Nom:</label>
+                    <input  class="col" type="text" name="nomEtablissement" value="" required/>
+                </div>  
+                <div class=" row">
+                    <label class="col" for="typeEtablissement">Type établissement:</label>
+                    <input  class="col" type="text" name="typeEtablissement" value="" required />
+                </div>
+                <div class="row">
+                    <label  class="col" for="responsableEtablissement">Responsable:</label>
+                    <input  class="col" type="text" name="responsableEtablissement" value="" required />
+                </div>
+                <div class="row">
+                    <input type="submit" class="form-control form-control-sm col" value="Supprimer" name="supprimerEtab" />
+                    <input type="submit"  class="form-control form-control-sm col" value="Modifier" name="modifierEtab" />
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <!--Fin Modifier Etablissement-->
+    <!--Début Modifier Elève-->
+    <form class="navbar-form navbar-left" role="search" id="modifierEleve" style="display: none;" action="index.php?do=modifier&action=modifierEleve" method="POST">
+
         <div class="row">   
             <div class ="col">
 
-                <input type="text"  class="form-control" placeholder="Search">
+                <input type="text"  class="form-control" id ="searchEleve" placeholder="Search">
 
-                <select  formname="Etablissement[]" multiple>
-                    <option>Etab</option>
+                <select id="listeEleve" formname="Eleve[]" multiple>
+                    <?php
+                    if (isset($selectEleve)) {
+                        for ($i = 0; $i < sizeof($selectEleve); $i++) {
+                            echo'<option id=' . $selectEleve[$i]['id_eleve'] . ' value=' . $selectEleve[$i]['id_eleve'] . '>' . $selectEleve[$i]['nom'] . " " . $selectEleve[$i]['prenom'] . '</option>';
+                        }
+                    } else {
+                        echo'<option>Il n\'y a aucun élève</option>';
+                    }
+                    ?>
                 </select>
             </div>  
 
 
-            <div class="col">
-                <div class="row ">
-                    <label for="nomEtablissement"> Nom:</label>
+            <div class="col-sm-9">
+                <div class="row">
+                    <label class="col" for="nomEleve"> Nom:</label>
+                    <input class="col" type="text" name="nomEleve" value="" required/>
                 </div>  
-                <div class=" row">
-                    <label for="typeEtablissement">Type établissement:</label>
+                <div class="row">
+                    <label class="col" for="prenomEleve">Prenom:</label>
+                    <input class="col" type="text" name="prenomEleve" value="" required />
                 </div>
                 <div class="row">
-                    <label for="responsableEtablissement">Responsable:</label>
+                    <label class="col" for="dateNaissanceEleve">Date de naissance:</label>
+                    <input class="col"type="text" name="dateNaissanceEleve" value="" required />
                 </div>
-                <br/> <br /> 
                 <div class="row">
-                    <div class="col">
-                        <input type="submit" value="Supprimer" name="supprimerAVS" />
-                    </div>
+
+                    <label class="col" for="classeEleve">Classe:</label>
+                    <select class="col" name="classeEleve" required>
+                        <option>Choisir une classe</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label class="col" for="etablissementEleve">Etablissement élève:</label>
+                    <select class="col" name="etablissementEleve" required>
+                        <option>Choisir un établissement</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <input type="submit" class="form-control form-control-sm col" value="Supprimer" name="supprimerEleve" />
+                    <input type="submit"  class="form-control form-control-sm col" value="Modifier" name="modifierEleve" />
                 </div> 
-            </div>
-
-
-            <div class="col">
-                <div class ="row">  
-
-                    <div class="col">  
-                        <input type="text" name="nomEtablissement" value="" required/>
-                        <br>    
-                    </div>    
-                </div>
-
-                <div class="row">
-
-                    <div class="col">
-                        <input type="text" name="typeEtablissement" value="" required />
-                        <br>
-                    </div>
-                </div>
-
-                <div class="row">   
-
-                    <div class="col">
-                        <input type="text" name="responsableEtablissement" value="" required />
-                        <br>
-                    </div>
-                </div>
-
-                <div class="row">   
-                    <div class="col">
-                        <input type="submit" value="Modifier" name="modifierEtab" />
-                    </div>  
-                </div>   
             </div>
         </div>
     </form>
-    <!--fin modifer etab-->
+    <!--Fin Modification eleve-->
+    <!--Début Modifier AVS-->
+    <form class="navbar-form navbar-left" role="search" id="modifierAVS" style="display: none;" action="index.php?do=modifier&action=mofifierAVS" method="POST">
 
-    <form class="navbar-form navbar-left" role="search" id="modifierEleve" style="display: none;" action="index.php?do=modifier&action=modifierEleve" method="POST">
+        <div class="row">   
+            <div class ="col">
 
-        <div class ="col">
+                <input type="text" id="searchAvs"  class="form-control" placeholder="Search">
 
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-
-
-            <select name="Eleve[]" multiple>
-                <option>Choisir un eleve</option>
-            </select>
-            <input type="submit" value="Supprimer" name="supprimerEleve" />
-        </div>   
-        <div class="col">  </div>
-
-        <div class="col">       
-            <div class="row">
-                <div class="col">
-                    <div class="form">
-                        <label for="nomEleve">Nom:</label>
-                    </div>  
-                </div>        
-                <div class="col">        
-                    <input type="text" name="nomEleve" value="" required />
-                    <br>
-                </div>
-            </div>
-
-            <div class="row">  
-                <div class="col">
-                    <div class="form">
-                        <label for="prenomEleve">Prénom:</label>
-                    </div>
-                </div>
-                <div class="col">
-                    <input type="text" name="prenomEleve" value="" required />
-                    <br>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col">
-                    <div class="form">
-                        <label for="dateNaissanceEleve">Date de naissance:</label>
-                        <br>
-                    </div>    
-                    <div class="col">
-                        <input type="date" name="dateNaissanceEleve" value="" required/>
-                        <br>
-                    </div>    
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="form">
-                        <label for="etablissementEleve">Etablissement:</label>
-                        <select name="etablissementEleve" required >
-                            <option>Choisir un établissement</option>
-                        </select>
-                        <br>
-                    </div>
-                </div>    
+                <select  id="listeAVS" formname="AVS[]" multiple>
+                    <?php
+                    if (isset($selectAVS)) {
+                        for ($i = 0; $i < sizeof($selectAVS); $i++) {
+                            echo'<option id=' . $selectAVS[$i]['id_avs'] . ' value=' . $selectAVS[$i]['id_avs'] . '>' . $selectAVS[$i]['nom'] . " " . $selectAVS[$i]['prenom'] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
             </div> 
-            <div class="row">
-                <div class="col">
-                    <div class="form">
-                        <label for="classeEleve">Classe:</label>
-                    </div>
-                </div>     
-                <div class="col">
-                    <input type="text" name="classeEleve" value="" required />
-                    <br>
+
+
+
+            <div class="col-sm-9">
+                <div class="row ">
+                    <label class="col" for="nomAVS"> Nom:</label>
+                    <input class="col" type="text" name="nomAVS" value="" required/>
+                </div>  
+                <div class=" row">
+                    <label class="col" for="prenomAVS">Prénom:</label>
+                    <input class="col" type="text" name="prenomAVS" value="" required />
                 </div>
-            </div>     
-            <input type="submit" value="Modifier" name="modifierEleve"/>
-        </div>  
-    </form>
+                <div class="row">
+                    <label class="col"  for="emailAVS">Email:</label>
+                    <input class="col"  type="email" name="emailAVS" value="" required />
+                </div>
+                <div class="row">
+                    <label class="col" for="eleveAVS">Elève assignés:</label>
+                    <select class="col" name="eleveAVS" class="form-control" multiple required>
+                        <option>Choisir un Elève</option>
+                    </select>
+                </div>
 
-    <!--fin modif eleve-->
-    <form class="navbar-form navbar-left" role="search" id="modifierAVS" style="display: none;" action="index.php?do=modifier&action=mofifierEtablissement" method="POST">
-
-        <div class ="col">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <div class="row">
+                    <input type="submit" class="form-control form-control-sm col" value="Supprimer" name="supprimerAVS" />
+                    <input type="submit"  class="form-control form-control-sm col" value="Modifier" name="modifierAVS" />
+                </div> 
             </div>
+        </div>
+</div>
 
+</form>     
 
-            <select name="AVS[]" multiple>
-                <option>Choisir un Avs</option>
-            </select>
-            <input type="submit" value="Supprimer" name="supprimerAvs" />
-        </div>   
-        <div class="col">  </div>
-
-        <div class="col">
-
-            <div class="row">
-                <div class="col">
-                    <div class="form"
-                         <label for="nomAVS">Nom:</label>
-                    </div>  
-                </div>
-                <div class="col">
-                    <input type="text" name="nomAVS" value="" required />
-                    <br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="form"
-                         <label for="PrenomAVS">Prénom:</label>
-                    </div>
-                </div>
-                <div class="col">   
-                    <input type="text" name="PrenomAVS" value="" required />
-                    <br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="form"
-                         <label for="dateNaissanceAVS">Date de naissance:</label>
-                    </div>
-                </div>
-                <div class="col">
-                    <input type="date" name="dateNaissanceAVS" value="" required />
-                    <br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="form"
-                         <label for="emailAVS">Email:</label>
-                    </div>
-                </div>
-                <div class="col">
-                    <input type="email" name="emailAVS" value="" placeholder="xyz@gmail.com" required />
-                    <br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col"> 
-                    <div class="form"
-                         <select name="eleveAssigneAVS[]" multiple>
-                            <option>Choisir Un Eleve</option>
-                        </select>
-                        <br>
-                        <br>
-                    </div>
-                </div>
-                <div class="col">
-                    <input type="submit" value="Modifier" name="modifierAVS" />
-                </div>
-            </div>
-        </div> 
-
-    </form>     
-
-    <!--Fin fin--> 
+<!--Fin Modifier AVS--> 
 
 
 

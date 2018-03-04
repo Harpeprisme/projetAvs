@@ -14,7 +14,7 @@ input[type=date],input[type=text], select {
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #00A1E4;
-    border-radius: 4px;
+    border-radius: 21px;
     box-sizing: border-box;
 
 }
@@ -24,9 +24,9 @@ input[type=submit] {
     background-color: #00A1E4;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 21px;
     cursor: pointer;
 }
 

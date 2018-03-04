@@ -19,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href="styles/css_form.css" />
         <link rel="stylesheet" type="text/css" href="styles/css_ajouter.css" />
         <link rel="stylesheet" type="text/css" href="styles/css_informations.css" />
+        <link rel="stylesheet" type="text/css" href="styles/css_modifier.css" />
 
         <script type="text/javascript" src="js/js_ajouter.js"></script>
         <script type="text/javascript" src="js/js_informations.js"></script>
