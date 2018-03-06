@@ -25,6 +25,8 @@ switch ($action) {
             break;
         }
     case 'ajouterEtablissement': {
+        
+        
             $listEleve = $pdo->selectEleve();
             $listEtab = $pdo->selectEtablissement();
 

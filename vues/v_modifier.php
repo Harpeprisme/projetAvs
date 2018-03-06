@@ -32,7 +32,7 @@
             <div class ="col">
                 <input type="text" id="searchEtablissement" class="form-control" placeholder="Search">
 
-                <select id="listeEtablissement" formname="Etablissement[]" multiple>
+                <select id="listeEtablissement" formname="Etablissement[]"  onclick="afficherEtablissement()" multiple>
                     <?php
                     if (isset($selectEtablissement)) {
                         for ($i = 0; $i < sizeof($selectEtablissement); $i++) {
@@ -48,15 +48,15 @@
             <div class="col-sm-9">
                 <div class="row ">
                     <label class="col" for="nomEtablissement"> Nom:</label>
-                    <input  class="col" type="text" name="nomEtablissement" value="" required/>
+                    <input  class="col" type="text" id="nomEtablissement" name="nomEtablissement" value="" required/>
                 </div>  
                 <div class=" row">
                     <label class="col" for="typeEtablissement">Type établissement:</label>
-                    <input  class="col" type="text" name="typeEtablissement" value="" required />
+                    <input  class="col" type="text" id="typeEtablissement" name="typeEtablissement" value="" required />
                 </div>
                 <div class="row">
                     <label  class="col" for="responsableEtablissement">Responsable:</label>
-                    <input  class="col" type="text" name="responsableEtablissement" value="" required />
+                    <input  class="col" type="text" id ="responsableEtablissement" name="responsableEtablissement" value="" required />
                 </div>
                 <div class="row">
                     <input type="submit" class="form-control form-control-sm col" value="Supprimer" name="supprimerEtab" />
@@ -75,7 +75,7 @@
 
                 <input type="text"  class="form-control" id ="searchEleve" placeholder="Search">
 
-                <select id="listeEleve" formname="Eleve[]" multiple>
+                <select id="listeEleve" formname="Eleve[]" onclick="afficherEleve()" multiple>
                     <?php
                     if (isset($selectEleve)) {
                         for ($i = 0; $i < sizeof($selectEleve); $i++) {
@@ -92,27 +92,43 @@
             <div class="col-sm-9">
                 <div class="row">
                     <label class="col" for="nomEleve"> Nom:</label>
-                    <input class="col" type="text" name="nomEleve" value="" required/>
+                    <input class="col" type="text" id="nomEleve" name="nomEleve" value="" required/>
                 </div>  
                 <div class="row">
                     <label class="col" for="prenomEleve">Prenom:</label>
-                    <input class="col" type="text" name="prenomEleve" value="" required />
+                    <input class="col" type="text" id="prenomEleve" name="prenomEleve" value="" required />
                 </div>
                 <div class="row">
                     <label class="col" for="dateNaissanceEleve">Date de naissance:</label>
-                    <input class="col"type="text" name="dateNaissanceEleve" value="" required />
+                    <input class="col"type="text" id="dateNaissanceEleve" name="dateNaissanceEleve" value="" required />
                 </div>
                 <div class="row">
 
                     <label class="col" for="classeEleve">Classe:</label>
                     <select class="col" name="classeEleve" required>
-                        <option>Choisir une classe</option>
+                        <?php
+                        if (isset($selectClasse)) {
+                            for ($i = 0; $i < sizeof($selectClasse); $i++) {
+                                echo'<option id=' . $selectClasse[$i]['id_classe'] . ' value=' . $selectClasse[$i]['id_classe'] . '>' . $selectEleve[$i]['nom'] . '</option>';
+                            }
+                        } else {
+                            echo'<option>Il n\'y a aucune classe </option>';
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="row">
                     <label class="col" for="etablissementEleve">Etablissement élève:</label>
                     <select class="col" name="etablissementEleve" required>
-                        <option>Choisir un établissement</option>
+                        <?php
+                        if (isset($selectEtablissement)) {
+                            for ($i = 0; $i < sizeof($selectEtablissement); $i++) {
+                                echo'<option id=' . $selectEtablissement[$i][id_etablissement] . ' value=' . $selectEtablissement[$i][id_etablissement] . '>' . $selectEtablissement[$i][nom] . '</option>';
+                            }
+                        } else {
+                            echo'<option>Il n\'y a aucun établissement</option>';
+                        }
+                        ?>
                     </select>
                 </div>
 
@@ -132,7 +148,7 @@
 
                 <input type="text" id="searchAvs"  class="form-control" placeholder="Search">
 
-                <select  id="listeAVS" formname="AVS[]" multiple>
+                <select  id="listeAVS" formname="AVS[]" onclick="afficherAVS()" multiple>
                     <?php
                     if (isset($selectAVS)) {
                         for ($i = 0; $i < sizeof($selectAVS); $i++) {
@@ -148,20 +164,32 @@
             <div class="col-sm-9">
                 <div class="row ">
                     <label class="col" for="nomAVS"> Nom:</label>
-                    <input class="col" type="text" name="nomAVS" value="" required/>
+                    <input class="col" type="text" id="nomAVS" value="" required/>
                 </div>  
                 <div class=" row">
                     <label class="col" for="prenomAVS">Prénom:</label>
-                    <input class="col" type="text" name="prenomAVS" value="" required />
+                    <input class="col" type="text" id="prenomAVS" value="" required />
+                </div>
+                <div class="row">
+                    <label class="col"  for="dateNaissanceAVS">Date de naissance:</label>
+                    <input class="col"  type="date" id="dateNaissanceAVS" value="" required />
                 </div>
                 <div class="row">
                     <label class="col"  for="emailAVS">Email:</label>
-                    <input class="col"  type="email" name="emailAVS" value="" required />
+                    <input class="col"  type="email" id="emailAVS" value="" required />
                 </div>
                 <div class="row">
                     <label class="col" for="eleveAVS">Elève assignés:</label>
                     <select class="col" name="eleveAVS" class="form-control" multiple required>
-                        <option>Choisir un Elève</option>
+                        <?php
+                        if (isset($selectEleve)) {
+                            for ($i = 0; $i < sizeof($selectEleve); $i++) {
+                                echo'<option id=' . $selectEleve[$i]['id_eleve'] . ' value=' . $selectEleve[$i]['id_eleve'] . '>' . $selectEleve[$i]['nom'] . " " . $selectEleve[$i]['prenom'] . '</option>';
+                            }
+                        } else {
+                            echo'<option>Il n\'y a aucun élève</option>';
+                        }
+                        ?>
                     </select>
                 </div>
 
