@@ -25,7 +25,7 @@
 
     <center><h1>Gestion des Avs</h1></center>
     <br>
-    <h2>Académie Aix-Marseille</h2>
+    <center><h2>Académie Aix-Marseille</h2></center>
 
     <div class="center menu">
         <div id="myMenu"></div>

@@ -1,9 +1,33 @@
+function getEleveAVSParEtab()
+{
+   var x = document.getElementById("allEtab");
+   var e = x.options[x.selectedIndex].value;
+   console.log("value = "+ e);
+   document.location.href="index.php?do=informations&action=getEleveAVSEtab&IdEtab="+e;
+}
+
+function getInfoAVSParEleve()
+{
+   var x = document.getElementById("allEleve");
+   var e = x.options[x.selectedIndex].value;
+   var s = x.options[x.selectedIndex].id;
+   console.log("value = "+ e);
+   document.location.href="index.php?do=informations&action=getInfoAVSParEleve&IdAVS="+e+"&IdEleve="+s;
+}
+
+function getEtabEleveParAVS()
+{
+   var x = document.getElementById("allAVS");
+   var e = x.options[x.selectedIndex].id;
+   console.log("value = "+ e);
+   document.location.href="index.php?do=informations&action=getEtabEleveParAVS&IdAVS="+e;
+}
+
+
 function affEtabInfo()
 {
-   
     if (document.getElementById('ibEtablissement').checked == true)
     {
-         console.log("Working");
         document.getElementById('infoEtablissement').style.display = "";
         document.getElementById('infoEleve').style.display = "none";
         document.getElementById('infoAVS').style.display = "none";
@@ -25,3 +49,17 @@ function affEtabInfo()
     }
 
 }
+
+function changeSelectOption(param){
+    console.log('sekjfhzekngf');
+    if(param == 'eleve'){
+        document.getElementById('ibEleve').checked = true;
+    } 
+    else if (param == 'etablissement') {
+        document.getElementById('ibEtablissement').checked = true;
+    }
+    else if (param == 'avs') {
+        document.getElementById('ibAVS').checked = true;
+    }
+    affEtabInfo();
+    }

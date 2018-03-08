@@ -211,7 +211,42 @@ class PdoExemple {
         return PdoExemple::$resultat;
         
     }
-
+function listEleveParEtab($id){
+      $req='SELECT *
+      FROM eleve where id_eleve in (select id_eleve from appartient where id_etablissement = '.$id.')';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function listAVSParEtab($id){
+      $req='SELECT *
+      FROM avs where id_avs in (select id_avs from gere where id_etablissement = '.$id.')';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getInfoEleve($id){
+      $req='SELECT *
+      FROM eleve where id_eleve = '.$id.'';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getAVSEtab($id){
+      $req='SELECT *
+      FROM etablissement where id_etablissement in (select id_etablissement from gere where id_avs = '.$id.')';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getAVSEleve($id){
+      $req='SELECT *
+      FROM eleve where id_eleve in (select id_eleve from appartient where id_avs = '.$id.')';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
 }
+
 
 ?>
