@@ -1,9 +1,15 @@
-function getEleveAVSParEtab()
+function getEleveAVSParEtab(param)
 {
-   var x = document.getElementById("allEtab");
-   var e = x.options[x.selectedIndex].value;
-   console.log("value = "+ e);
-   document.location.href="index.php?do=informations&action=getEleveAVSEtab&IdEtab="+e;
+   if(param == 'true'){
+      var m = document.getElementById("AVSByEtab");
+      var n = m.options[m.selectedIndex].id;
+      document.location.href="index.php?do=informations&action=getEleveAVSEtab&AVSByEtab="+n;
+   } else {
+        var x = document.getElementById("allEtab");
+        var e = x.options[x.selectedIndex].value;
+       document.location.href="index.php?do=informations&action=getEleveAVSEtab&IdEtab="+e;
+   }
+   
 }
 
 function getInfoAVSParEleve()
@@ -19,6 +25,7 @@ function getEtabEleveParAVS()
 {
    var x = document.getElementById("allAVS");
    var e = x.options[x.selectedIndex].id;
+ 
    console.log("value = "+ e);
    document.location.href="index.php?do=informations&action=getEtabEleveParAVS&IdAVS="+e;
 }
