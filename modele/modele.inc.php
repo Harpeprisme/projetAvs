@@ -95,6 +95,15 @@ class PdoExemple {
         return PdoExemple::$resultat;
     }
 
+    public function selectEtablissementAjax($id_etablissement) {
+
+        $req = "SELECT `id_etablissement`, `nom`, `type_etablissement`, `responsable_etablissement` FROM `etablissement` WHERE `id_etablissement` = " . $id_etablissement . "";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        $result = json_encode($ligne);
+        return $result;
+    }
+
     public function selectEtablissement() {
 
         $req = "SELECT `id_etablissement`, `nom`, `type_etablissement`, `responsable_etablissement` FROM `etablissement`";
@@ -152,6 +161,27 @@ class PdoExemple {
         $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
         return $ligne;
     }
+    
+     public function selectEleveAjax($idEleve) {
+
+        $req = "SELECT `id_eleve`, `nom`, `prenom`, `date_naissance`, `id_avs` FROM `eleve` where id_eleve = ".$idEleve."";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        $result = json_encode($ligne);
+        return $result;
+    }
+    
+    public function selectAVSAjax($idavs) {
+
+        $req = "SELECT `id_avs`, `nom`, `prenom`, `date_naissance`, `mail`, `Annee` FROM `avs` WHERE id_avs = ".$idavs."";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        $result = json_encode($ligne);
+        return $result;
+    }
+    
+    
+
 
     public function selectMaxEleve() {
 
@@ -169,36 +199,54 @@ class PdoExemple {
         return $ligne['maxClasse'];
     }
     
+   
+    
+    public function selectClasse() {
+
+        $req = "SELECT id_classe,nom from classe";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+
+    public function selectClasseEleveAjax($idEleve) {
+
+        $req = "SELECT `id_etablissement`, `id_eleve`, `id_classe` FROM `appartient` WHERE id_eleve ='.$idEleve.'";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        $result = json_encode($ligne);
+        return $result;
+    }
+
     public function selectMaxAVS() {
 
         $req = "SELECT max(id_avs) as maxAvs from AVS";
         $rs = PdoExemple::$monPdo->query($req);
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
-        return $ligne['maxAvs'];
+        return $ligne[
+                'maxAvs'];
     }
-    
+
     public function insertAppartient($idEtablissementEleve, $idEleve, $idClasse) {
-        
-        $req = "INSERT INTO `appartient`(`id_etablissement`, `id_eleve`, `id_classe`) VALUES (:idEtablissementEleve,:idEleve,:idClasse)";
+
+        $req = "  INSERT INTO `appartient`(`id_etablissement`, `id_eleve`, `id_classe`) VALUES (:idEtablissementEleve, :idEleve, :idClasse)";
 
         $prep = PdoExemple::$monPdo->prepare($req);
         $prep->bindValue(':idEtablissementEleve', $idEtablissementEleve, PDO::PARAM_INT);
         $prep->bindValue(':idEleve', $idEleve, PDO::PARAM_INT);
-        $prep->bindValue(':idClasse', $idClasse,PDO::PARAM_INT);
+        $prep->bindValue(':idClasse', $idClasse, PDO::PARAM_INT);
         $prep->execute();
 
         if ($prep->errorInfo()[1] != null) {
             PdoExemple::$resultat = 0;
         }
         return PdoExemple::$resultat;
-        
     }
-    
-    public function updateEleve($idMaxAvs, $idEleve) {
-        
-        
-        
-        $req = "UPDATE `eleve` SET `id_avs` = :idMaxAvs  WHERE `id_eleve`= :idEleve";
+
+    public function updateEleve(
+    $idMaxAvs, $idEleve) {
+
+        $req = " UPDATE `eleve` SET `id_avs` = :idMaxAvs WHERE `id_eleve` = :idEleve";
 
         $prep = PdoExemple::$monPdo->prepare($req);
         $prep->bindValue(':idMaxAvs', $idMaxAvs, PDO::PARAM_INT);
@@ -209,7 +257,31 @@ class PdoExemple {
             PdoExemple::$resultat = 0;
         }
         return PdoExemple::$resultat;
-        
+    }
+
+    public function selectEtablissementEleve(
+    $idEleve) {
+
+        $req = "SELECT id_classe from appartient where id_eleve = " . $idEleve;
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne[
+                'id_classe'];
+    }
+
+    public function insertGere($idMaxAvs, $etblissementEleve) {
+
+        $req = " INSERT INTO `gere`(`id_avs`, `id_etablissement`) VALUES (:idMaxAvs, :etblissementEleve)";
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+        $prep->bindValue(':idMaxAvs', $idMaxAvs, PDO::PARAM_INT);
+        $prep->bindValue(':etblissementEleve', $etblissementEleve, PDO::PARAM_INT);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+            PdoExemple::$resultat = 0;
+        }
+        return PdoExemple::$resultat;
     }
 function listEleveParEtab($id){
       $req='SELECT *

@@ -14,7 +14,7 @@ input[type=date],input[type=text], select {
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #00A1E4;
-    border-radius: 4px;
+    border-radius: 21px;
     box-sizing: border-box;
 
 }
@@ -24,9 +24,9 @@ input[type=submit] {
     background-color: #00A1E4;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 21px;
     cursor: pointer;
 }
 
@@ -91,4 +91,31 @@ label::before {
     -webkit-transition: .25s all ease;
     -o-transition: .25s all ease;
     transition: .25s all ease;
+}
+
+/*ScrollBar*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    /*box-shadow:0 5px black;*/ 
+    border-radius: 10px;
+}
+
+
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00a1e4; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #027bad; 
 }
