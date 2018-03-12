@@ -20,7 +20,8 @@ $action = $_REQUEST['action'];
 switch ($action) {
 
     case 'afficherInformations': {
-           require("vues/v_informations.php");
+            $paramSelect = "etab";
+            require("vues/v_informations.php");
             break;
         }
 
@@ -36,6 +37,7 @@ switch ($action) {
          $getAVSEtab2 = $pdo->getAVSEtab($_GET['AVSByEtab']);
          $getAVSEleve2 = $pdo->getAVSEleve($_GET['AVSByEtab']);
         }
+        $paramSelect = "etab";
         require("vues/v_informations.php");
         break;
     }
@@ -49,6 +51,7 @@ switch ($action) {
             $getAVSEtab = $pdo->getAVSEtab($_GET['IdAVS']);
             $getAVSEleve = $pdo->getAVSEleve($_GET['IdAVS']);
         }
+        $paramSelect = "eleve";
         require("vues/v_informations.php");
         break;
     }
@@ -57,6 +60,7 @@ switch ($action) {
          $infoAVS2 = $pdo->getInfoAVS($_GET['IdAVS']);
          $getAVSEtab = $pdo->getAVSEtab($_GET['IdAVS']);
          $getAVSEleve = $pdo->getAVSEleve($_GET['IdAVS']);
+         $paramSelect = "avs";
         require("vues/v_informations.php");
         break;
     }

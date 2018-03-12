@@ -3,18 +3,18 @@
     <div class="row">
         <div class="col-xl-12">
             <center>
-                <input type="radio" name="rb" id="ibEtablissement" checked="true" onclick="affEtabInfo();"/>
+                <input type="radio" name="rb" id="ibEtablissement" <?php if ($paramSelect == 'etab' ) echo 'checked="checked"' ; ?> onclick="affEtabInfo();"/>
                 <label class="radio"  for="ibEtablissement">Etablissement</label>
-                <input   type="radio" name="rb" id="ibEleve"  onclick="affEtabInfo();" />
+                <input   type="radio" name="rb" id="ibEleve" <?php if ($paramSelect == 'eleve' ) echo 'checked="checked"' ; ?>  onclick="affEtabInfo();" />
                 <label class="radio"for="ibEleve">Eleve</label>
-                <input type="radio" name="rb" id="ibAVS" onclick="affEtabInfo();"/>
+                <input type="radio" name="rb" id="ibAVS" <?php if ($paramSelect == 'avs' ) {echo 'checked="checked"' ;} ?> onclick="affEtabInfo();"/>
                 <label class="radio"  for="ibAVS">AVS</label>
             </center>
         </div>
     </div>
 </div>
 <!--***********************************************page informationEtablissement********************************-->
-<div id="infoEtablissement">
+<div id="infoEtablissement" <?php if ($paramSelect != 'etab' ) echo 'style="display: none;"' ; ?>>
     <div class="container">
         <div class="row">
             <div class="col-xl-12" style="padding-left: 120px;padding-top: 20px;">
@@ -39,7 +39,11 @@
                         <select id="allEtab" class="col-ETAB" name="infoEtablissement" id="" size="20" style="margin-top: 20px" onClick="getEleveAVSParEtab(false);">
                             <?php
                             foreach ($listEtab as $etab) {
-                                echo'<option id=' . $etab['id_etablissement'] . ' value=' . $etab['id_etablissement'] . '>' . $etab['nom'] . '</option>';
+                                    if(isset($_GET['IdEtab']) && $etab['id_etablissement'] == $_GET['IdEtab']){
+                                        echo'<option id=' . $etab['id_etablissement'] . ' selected="selected" value=' . $etab['id_etablissement'] . '>' . $etab['nom'] . '</option>';
+                                        } else{
+                                            echo'<option id=' . $etab['id_etablissement'] . ' value=' . $etab['id_etablissement'] . '>' . $etab['nom'] . '</option>';
+                                        }
                             }
                             ?>
                         </select>
@@ -49,7 +53,7 @@
 
                 <div name="col-ELEVE" class="col" style="padding-left: 30px;">
                 <fieldset>
-                        <legend> <h3> Informations Etablissemnts </h3></legend>
+                        <legend> <h3> Informations Etablissements </h3></legend>
 
                         <div class="container-1">
                             <label for="mon_id" style="float: left;">Nom: <?php if(isset($infoEtab))echo $infoEtab['nom'];?></label>
@@ -82,7 +86,11 @@
                     <select class="col-AVS"name="infoEtablissement" id="AVSByEtab" size="10" style="margin-top: 235px;" onClick="getEleveAVSParEtab('true')">
                         <?php
                         foreach ($listAVSParEtab as $AVS) {
-                            echo'<option id=' . $AVS['id_avs'] . ' value=' . $AVS['id_avs'] . '>' . $AVS['nom'] . '</option>';
+                            if(isset($_GET['AVSByEtab']) && $AVS['id_avs'] == $_GET['AVSByEtab']){
+                                            echo'<option id=' . $AVS['id_avs'] . ' selected="selected" value=' . $AVS['id_avs'] . '>' . $AVS['nom'] . '</option>';
+                                        } else{
+                                            echo'<option id=' . $AVS['id_avs'] . ' value=' . $AVS['id_avs'] . '>' . $AVS['nom'] . '</option>';
+                                        }
                         }
                         ?>
                     </select>
@@ -159,7 +167,7 @@
                                                                  ***********
                                                                               **************
                                                                                             *******-->
-<div id="infoAVS" style="display: none;"> 
+<div id="infoAVS" <?php if ($paramSelect != 'avs' ) echo 'style="display:none;"' ; ?>> 
     <div class="container">
         <div class="row">
             <div class="col-xl-12" style="padding-left: 120px;padding-top: 20px;">
@@ -180,7 +188,11 @@
                         <select id="allAVS" name="nom" size="20" style="width: 280px;" onClick="getEtabEleveParAVS()">
                             <?php
                             foreach ($listAVS as $avs) {
-                                echo'<option id=' . $avs['id_avs'] . ' value=' . $avs['id_avs'] . '>' . $avs['nom'] . '</option>';
+                                if(isset($_GET['IdAVS']) && $avs['id_avs'] == $_GET['IdAVS']){
+                                            echo'<option id=' . $avs['id_avs'] . ' selected="selected" value=' . $avs['id_avs'] . '>' . $avs['nom'] . '</option>';
+                                        } else{
+                                            echo'<option id=' . $avs['id_avs'] . ' value=' . $avs['id_avs'] . '>' . $avs['nom'] . '</option>';
+                                        }
                             }
                             ?>
                         </select>
@@ -219,7 +231,7 @@
 
                         <div class="row">
                             <div class="col-4" style="padding-left: 70px;padding-top: 10px;">
-                                <select class="col-ELEVE2" name="infoEtablissement" id="ibAVS" size="8" style="margin-top: 0px;width: 240px">
+                                <select class="col-ELEVE2" name="infoEtablissement"  size="8" style="margin-top: 0px;width: 240px">
                                     <?php
                                     foreach ($getAVSEtab as $etab) {
                                         echo'<option id=' . $etab['id_etablissement'] . '>' . $etab['nom'] . '</option>';
@@ -258,7 +270,7 @@ page informationELEVE
 
 ********************************-->
 
-<div id="infoEleve"  style="display: none;">
+<div id="infoEleve" <?php if ($paramSelect != 'eleve' ) echo 'style="display:none;"' ; ?>>
     <div class="container">
         <div class="row">
             <div class="col-xl-12" style="padding-left: 120px;padding-top: 20px;">
@@ -283,7 +295,11 @@ page informationELEVE
                         <select class="col-ETAB" name="infoEtablissement" id="allEleve" size="20" style="margin-top: 20px" onClick="getInfoAVSParEleve()">
                             <?php
                             foreach ($listEleve as $eleve) {
-                                echo'<option id=' . $eleve['id_eleve'] . ' value=' . $eleve['id_eleve'] . '>' . $eleve['nom'] . '</option>';
+                                if(isset($_GET['IdEleve']) && $eleve['id_eleve'] == $_GET['IdEleve']){
+                                    echo'<option id=' . $eleve['id_eleve'] . ' selected="selected" value=' . $eleve['id_eleve'] . '>' . $eleve['nom'] . '</option>';
+                                } else{
+                                    echo'<option id=' . $eleve['id_eleve'] . ' value=' . $eleve['id_eleve'] . '>' . $eleve['nom'] . '</option>';
+                                     }
                             }
                             ?>
                         </select>

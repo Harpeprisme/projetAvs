@@ -329,7 +329,7 @@ function listEleveParEtab($id){
       $req='SELECT *
       FROM eleve where id_eleve in (select id_eleve from appartient where id_avs = '.$id.')';
       $rs = PdoExemple::$monPdo->query($req);
-      $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
       return $ligne;
     }
 

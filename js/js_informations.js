@@ -1,12 +1,12 @@
 function getEleveAVSParEtab(param)
 {
+    var x = document.getElementById("allEtab");
+    var e = x.options[x.selectedIndex].value;
    if(param == 'true'){
       var m = document.getElementById("AVSByEtab");
       var n = m.options[m.selectedIndex].id;
-      document.location.href="index.php?do=informations&action=getEleveAVSEtab&AVSByEtab="+n;
+      document.location.href="index.php?do=informations&action=getEleveAVSEtab&&IdEtab="+e+"&AVSByEtab="+n;
    } else {
-        var x = document.getElementById("allEtab");
-        var e = x.options[x.selectedIndex].value;
        document.location.href="index.php?do=informations&action=getEleveAVSEtab&IdEtab="+e;
    }
    
