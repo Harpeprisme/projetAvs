@@ -42,8 +42,8 @@
         
                 <select class="col-ETAB" name="infoEtablissement" id="" multiple size="20">
                     <?php
-                    foreach ($listAVS as $AVS) {
-                        echo'<option id=' . $AVS['id'] . '>' . $AVS['nom'] . '</option>';
+                    foreach ($getAllAnnee as $annee) {
+                        echo'<option id=' . $annee['annee'] . '>' . $annee['annee'] . '</option>';
                     }
                     ?>
                 </select>

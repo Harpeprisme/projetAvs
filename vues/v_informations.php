@@ -41,33 +41,26 @@
            <!-- colonne etablissemrnt-->
            <div class="col" id="ibAVS" name="col-AVS">
             <input type="text" id="searchEtablissement" class="form-control" placeholder="Search"> <!--INPUT-->
-            <select id="allEtab" name="infoEtablissement" id="" size="20"  onClick="getEleveAVSParEtab(false);">
+            <select id="allEtab" name="infoEtablissement" id="" size="20"  onClick="getEleveAVSParEtab();">
                 <?php
-                foreach ($listEtab as $etab) {
-                    if(isset($_GET['IdEtab']) && $etab['id_etablissement'] == $_GET['IdEtab']){
+                foreach ($allListAVSParEtab as $value) {
                             //affiche les Etablissment
-                        echo'<optgroup label='.$etab['nom'].' id=' . $etab['id_etablissement'] . ' selected="selected" value=' . $etab['id_etablissement'] . '>';
-
-                            //Affiche les AVS qui appartienne à l'établissement
-
-                        foreach ($listAVSParEtab as $AVS) {
-                            if(isset($_GET['AVSByEtab']) && $AVS['id_avs'] == $_GET['AVSByEtab']){
-                                echo'<option id=' . $AVS['id_avs'] . ' selected="selected" value=' . $AVS['id_avs'] . '>' . $AVS['nom'] . '</option>';
-                            } else{
-                                echo'<option id=' . $AVS['id_avs'] . ' value=' . $AVS['id_avs'] . '>' . $AVS['nom'] . '</option>';
-                            }
+                        echo'<optgroup label='.$value['nom'].' id=' . $value['id_etablissement'] . ' value=' . $value['id_etablissement'] . '>';
+                        if($value['listIdAVS'] != null){
+                            $listNomAVS = explode(",", $value['listNomAVS']);
+                            $listPrenomAVS = explode(",", $value['listPrenomAVS']);
+                            $listIdAVS = explode(",", $value['listIdAVS']);
                         }
-
-                            //Fin avs
-                        echo'<option>AVS 1</option>';
+                        //Affiche les AVS qui appartienne à l'établissement
+                        for($i = 0; $i < sizeof($listIdAVS); $i++){
+                            /*if(isset($_GET['IdAVS']) && $listIdAVS[$i] == $_GET['IdAVS']){
+                                echo'<option id=' . $listIdAVS[$i] . ' selected="selected" value=' . $value['id_etablissement'] . '>' . $listNomAVS[$i] . ' '.$listPrenomAVS[$i].'</option>';
+                            } else{*/
+                                echo'<option id=' . $listIdAVS[$i] . ' value=' . $value['id_etablissement'] . '>' . $listNomAVS[$i] . ' '.$listPrenomAVS[$i].'</option>';
+                          //  }
+                        }
                         echo '</optgroup>';
-
-                    } else{
-                      echo'<optgroup label='.$etab['nom'].' id=' . $etab['id_etablissement'] . ' selected="selected" value=' . $etab['id_etablissement'] . '>';
-                      echo'<option>abergel</option>';
-                      echo'</optgroup>';
                   }
-              }
               ?>
           </select>
 
@@ -224,10 +217,10 @@
 
  <div class="row">
 
-    <label class="row">Liste des élèves:</label>
+    <label class="row">Liste des Etablissements:</label>
     
     <div class="col"></div>
-    <label class="row">Liste des Etablissements:</label>
+    <label class="row">Liste des Eleves:</label>
     
 </div>
 

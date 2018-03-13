@@ -355,6 +355,22 @@ function listEleveParEtab($id){
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
         return $ligne;
     }
+    public function getAllAnnee() {
+        $req = "SELECT DISTINCT(annee) FROM `avs`";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+    function allListAVSParEtab(){
+      $req="SELECT E.*, GROUP_CONCAT(A.nom SEPARATOR ',') as listNomAVS, GROUP_CONCAT(A.id_avs SEPARATOR ',') as listIdAVS, GROUP_CONCAT(A.prenom SEPARATOR ',') as listPrenomAVS
+            FROM `etablissement` E
+            LEFT JOIN `gere` G ON G.id_etablissement = E.id_etablissement
+            LEFT JOIN `avs` A ON G.id_avs = A.id_avs
+            GROUP BY id_etablissement";
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
 }
 
 

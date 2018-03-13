@@ -15,6 +15,7 @@ $listEleve = $pdo->selectEleve();
 $listAVS = $pdo->selectAVS();
 $listEtab = $pdo->selectEtablissement();// à enlever par la suite lors du blocage des radiosboutons
 $listAppartient = $pdo->selectAppartient();
+$allListAVSParEtab = $pdo->allListAVSParEtab();
 
 $action = $_REQUEST['action'];
 switch ($action) {
@@ -29,13 +30,12 @@ switch ($action) {
         if(isset($_GET['IdEtab'])){
             $infoEtab = $pdo->getInfoEtab($_GET['IdEtab']);
             $listEleveParEtab = $pdo->listEleveParEtab($_GET['IdEtab']);
-            $listAVSParEtab = $pdo->listAVSParEtab($_GET['IdEtab']);
         }
         
-        if(isset($_GET['AVSByEtab'])){
-         $infoAVS = $pdo->getInfoAVS($_GET['AVSByEtab']);    
-         $getAVSEtab2 = $pdo->getAVSEtab($_GET['AVSByEtab']);
-         $getAVSEleve2 = $pdo->getAVSEleve($_GET['AVSByEtab']);
+        if(isset($_GET['IdAVS'])){
+         $infoAVS = $pdo->getInfoAVS($_GET['IdAVS']);    
+         $getAVSEtab2 = $pdo->getAVSEtab($_GET['IdAVS']);
+         $getAVSEleve2 = $pdo->getAVSEleve($_GET['IdAVS']);
         }
         $paramSelect = "etab";
         require("vues/v_informations.php");
