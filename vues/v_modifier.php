@@ -30,7 +30,7 @@
         <div class="row col"> 
 
             <div class ="col">
-                <input type="text" id="searchEtablissement" class="form-control" placeholder="Search">
+                <input type="text" id="searchEtablissement" class="form-control" placeholder="search">
 
                 <select id="listeEtablissement" formname="Etablissement[]"  onclick="afficherEtablissement()" multiple>
                     <?php

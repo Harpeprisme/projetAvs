@@ -1,35 +1,3 @@
 .efface {
     display: none;
 }
-#test{
-   margin-top: 50px;
-    margin-left: 0px;
-    
-}
-#colETAB{
-    padding-left: 50px;
-}
-.coleta{
-    padding-top: 50px;
-}
-.col-AVS{
-    width: 180px;
-}
-.col-ELEVE{
-    width: 180px;
-}
-.col-ETAB{
-    width: 230px;
-}
-.col-ETAB2{
-    width: 100px;
-}
-.col-ELEVE2{
-    width: 230px;
-}
-.container{
-    max-width: 50000px;
-}
-.col-2{
-    max-width: 6000px;
-}

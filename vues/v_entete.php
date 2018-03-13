@@ -4,7 +4,7 @@
     <head>
         <script type="text/javascript" src="library/jquery-3.2.1.min"></script>
         <link href='http://fonts.googleapis.com/css?family=Terminal+Dosis' rel='stylesheet' type='text/css' />
-        <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav nav ">
-                    <a class="nav-item nav-link active" href="index.php?do=informations">Informations <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link " href="index.php?do=informations">Informations <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="index.php?do=ajouter">Ajouter</a>
                     <a class="nav-item nav-link" href="index.php?do=modifier">Modifier/Supprimer</a>
                     <a class="nav-item nav-link" href="index.php?do=historique">Historique</a>
