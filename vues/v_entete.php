@@ -25,12 +25,10 @@
         <script type="text/javascript" src="js/js_informations.js"></script>
         <script type="text/javascript" src="js/js_modifier.js"></script>
 
-        <title>Gestion des Avs</title>
+        
     </head>
     <body>
-    <center><h1>Gestion des Avs</h1></center>
-    <br>
-    <center><h2>Académie Aix-Marseille</h2></center>
+ 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="index.php?do=accueil">Gestion des Avs</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
