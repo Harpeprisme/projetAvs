@@ -304,6 +304,20 @@ function listEleveParEtab($id){
       $ligne = $rs->fetch(PDO::FETCH_ASSOC);
       return $ligne;
     }
+    function getInfoEtab($id){
+      $req='SELECT *
+      FROM etablissement where id_etablissement = '.$id.'';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getInfoAVS($id){
+      $req='SELECT *
+      FROM avs where id_avs = '.$id.'';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
     function getAVSEtab($id){
       $req='SELECT *
       FROM etablissement where id_etablissement in (select id_etablissement from gere where id_avs = '.$id.')';
@@ -317,6 +331,29 @@ function listEleveParEtab($id){
       $rs = PdoExemple::$monPdo->query($req);
       $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
       return $ligne;
+    }
+
+    public function selectAppartient() {
+
+        $req = "SELECT * FROM `appartient`";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+     public function getEtabEleve($id) {
+        $req = 'SELECT *
+      FROM etablissement where id_etablissement in (select id_etablissement from appartient where id_eleve = '.$id.')';
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+
+     public function getClasseEleve($id) {
+        $req = 'SELECT *
+      FROM classe where id_classe in (select id_classe from appartient where id_eleve = '.$id.')';
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne;
     }
 }
 
