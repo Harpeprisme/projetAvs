@@ -3,7 +3,6 @@ function getEleveAVSParEtab()
     var x = document.getElementById("allEtab");
     var e = x.options[x.selectedIndex].id;
     var n = x.options[x.selectedIndex].value;
-    console.log('lalal', n);
     document.location.href="index.php?do=informations&action=getEleveAVSEtab&IdAVS="+e+"&IdEtab="+n;
 }
 

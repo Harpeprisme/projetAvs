@@ -361,12 +361,36 @@ function listEleveParEtab($id){
         $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
         return $ligne;
     }
+     public function getAVSParAnnee($annee) {
+        $req = 'SELECT * FROM `avs` where annee='.$annee.'';
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+
+    public function getEleveAVSParAnnee($id, $annee) {
+        $req = 'SELECT * FROM eleve WHERE id_avs in (select id_avs from avs where id_avs = '.$id.' and annee='.$annee.')';
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
     function allListAVSParEtab(){
       $req="SELECT E.*, GROUP_CONCAT(A.nom SEPARATOR ',') as listNomAVS, GROUP_CONCAT(A.id_avs SEPARATOR ',') as listIdAVS, GROUP_CONCAT(A.prenom SEPARATOR ',') as listPrenomAVS
             FROM `etablissement` E
             LEFT JOIN `gere` G ON G.id_etablissement = E.id_etablissement
             LEFT JOIN `avs` A ON G.id_avs = A.id_avs
             GROUP BY id_etablissement";
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    
+    function allListEleveParAVS($annee){
+      $req="SELECT A.*, GROUP_CONCAT(E.nom SEPARATOR ',') as listNomEleve, GROUP_CONCAT(E.prenom SEPARATOR ',') as listPrenomEleve 
+            FROM `avs` A
+            LEFT JOIN `eleve` E ON E.id_avs = A.id_avs
+            Where annee = ".$annee."
+            GROUP BY id_avs";
       $rs = PdoExemple::$monPdo->query($req);
       $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
       return $ligne;

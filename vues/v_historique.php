@@ -40,7 +40,7 @@
                <p class="h3"> Annee
                </p>
         
-                <select class="col-ETAB" name="infoEtablissement" id="" multiple size="20">
+                <select id="annee" class="col-ETAB" name="infoEtablissement" id="" multiple size="20" onClick="getAllAVS();">
                     <?php
                     foreach ($getAllAnnee as $annee) {
                         echo'<option id=' . $annee['annee'] . '>' . $annee['annee'] . '</option>';
@@ -65,10 +65,14 @@
             <p class="h3"> 
                 AVS
             </p>
-                <select class="col-ETAB" name="historiqueavs" id="" multiple size="20">
+                <select class="col-ETAB" name="historiqueavs" id="historiqueavs" multiple size="20" onClick="getEleveAVSParAnnee()";>
                     <?php
-                    foreach ($listAVS as $AVS) {
-                        echo'<option id=' . $AVS['id'] . '>' . $AVS['nom'] . '</option>';
+                    foreach ($getAVSParAnnee as $AVS) {
+                        if(isset($_GET['IdAVS']) && $AVS['id_avs'] == $_GET['IdAVS']){
+                                echo'<option id=' . $AVS['id_avs'] . ' selected=selected value='.$_GET['annee'].'>' . $AVS['nom'] . ' '.$AVS['prenom'].'</option>';
+                        } else{
+                                echo'<option id=' . $AVS['id_avs'] . ' value='.$_GET['annee'].'>' . $AVS['nom'] . ' '.$AVS['prenom'].'</option>';
+                            }
                     }
                     ?>
                 </select>
@@ -100,8 +104,8 @@
                </p>
                 <select class="col-ETAB" name="infoEtablissement" id="" multiple size="20">
                     <?php
-                    foreach ($listAVS as $AVS) {
-                        echo'<option id=' . $AVS['id'] . '>' . $AVS['nom'] . '</option>';
+                    foreach ($getEleveAVSParAnnee as $eleve) {
+                        echo'<option id=' . $eleve['id'] . '>' . $eleve['nom'] . ' '.$eleve['prenom'].'</option>';
                     }
                     ?>
                 </select>
