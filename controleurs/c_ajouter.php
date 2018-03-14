@@ -25,8 +25,8 @@ switch ($action) {
             break;
         }
     case 'ajouterEtablissement': {
-        
-        
+
+
             $listEleve = $pdo->selectEleve();
             $listEtab = $pdo->selectEtablissement();
 
@@ -79,11 +79,13 @@ switch ($action) {
                 for ($i = 0; $i < sizeof($_REQUEST['eleveAssigneAVS']); $i++) {
                     //Insere les avs aux eleves sélectionnees
                     $idEleve = $_REQUEST['eleveAssigneAVS'][$i];
-                    $pdo->updateEleve($idMaxAvs, $idEleve);
-
+                    $pdo->updateEleveMax($idMaxAvs, $idEleve);
+                    
                     //Insère dans la table gere les etblissements des avs
                     $etblissementEleve = $pdo->selectEtablissementEleve($idEleve);
-                    $pdo->insertGere($idMaxAvs, $etblissementEleve);
+               
+                  $pdo->insertGere($idMaxAvs, $etblissementEleve);
+                  
                 }
             }
 

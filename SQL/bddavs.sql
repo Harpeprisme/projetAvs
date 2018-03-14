@@ -78,9 +78,9 @@ CREATE TABLE appartient(
         PRIMARY KEY (id_etablissement ,id_eleve ,id_classe )
 )ENGINE=InnoDB;
 
-ALTER TABLE ELEVE ADD CONSTRAINT FK_ELEVE_id_avs FOREIGN KEY (id_avs) REFERENCES AVS(id_avs);
-ALTER TABLE gere ADD CONSTRAINT FK_gere_id_avs FOREIGN KEY (id_avs) REFERENCES AVS(id_avs);
+ALTER TABLE ELEVE ADD CONSTRAINT FK_ELEVE_id_avs FOREIGN KEY (id_avs) REFERENCES AVS(id_avs) ;
+ALTER TABLE gere ADD CONSTRAINT FK_gere_id_avs FOREIGN KEY (id_avs) REFERENCES AVS(id_avs) ;
 ALTER TABLE gere ADD CONSTRAINT FK_gere_id_etablissement FOREIGN KEY (id_etablissement) REFERENCES ETABLISSEMENT(id_etablissement);
-ALTER TABLE appartient ADD CONSTRAINT FK_appartient_id_etablissement FOREIGN KEY (id_etablissement) REFERENCES ETABLISSEMENT(id_etablissement);
+ALTER TABLE appartient ADD CONSTRAINT FK_appartient_id_etablissement FOREIGN KEY (id_etablissement) REFERENCES ETABLISSEMENT(id_etablissement) ;
 ALTER TABLE appartient ADD CONSTRAINT FK_appartient_id_eleve FOREIGN KEY (id_eleve) REFERENCES ELEVE(id_eleve);
 ALTER TABLE appartient ADD CONSTRAINT FK_appartient_id_classe FOREIGN KEY (id_classe) REFERENCES CLASSE(id_classe);
