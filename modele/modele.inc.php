@@ -488,6 +488,7 @@ class PdoExemple {
         }
         return PdoExemple::$resultat;
     }
+<<<<<<< HEAD
     
 
     
@@ -564,7 +565,121 @@ class PdoExemple {
     }
     
     
+=======
+function listEleveParEtab($id){
+      $req='SELECT *
+      FROM eleve where id_eleve in (select id_eleve from appartient where id_etablissement = '.$id.')';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function listAVSParEtab($id){
+      $req='SELECT *
+      FROM avs where id_avs in (select id_avs from gere where id_etablissement = '.$id.')';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getInfoEleve($id){
+      $req='SELECT *
+      FROM eleve where id_eleve = '.$id.'';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getInfoEtab($id){
+      $req='SELECT *
+      FROM etablissement where id_etablissement = '.$id.'';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getInfoAVS($id){
+      $req='SELECT *
+      FROM avs where id_avs = '.$id.'';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getAVSEtab($id){
+      $req='SELECT *
+      FROM etablissement where id_etablissement in (select id_etablissement from gere where id_avs = '.$id.')';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    function getAVSEleve($id){
+      $req='SELECT *
+      FROM eleve where id_eleve in (select id_eleve from appartient where id_avs = '.$id.')';
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
 
+    public function selectAppartient() {
+
+        $req = "SELECT * FROM `appartient`";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+     public function getEtabEleve($id) {
+        $req = 'SELECT *
+      FROM etablissement where id_etablissement in (select id_etablissement from appartient where id_eleve = '.$id.')';
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+
+     public function getClasseEleve($id) {
+        $req = 'SELECT *
+      FROM classe where id_classe in (select id_classe from appartient where id_eleve = '.$id.')';
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+    public function getAllAnnee() {
+        $req = "SELECT DISTINCT(annee) FROM `avs`";
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+     public function getAVSParAnnee($annee) {
+        $req = 'SELECT * FROM `avs` where annee='.$annee.'';
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+>>>>>>> 73c1d3ecbb79dcaa739218ec4f717e7388569700
+
+    public function getEleveAVSParAnnee($id, $annee) {
+        $req = 'SELECT * FROM eleve WHERE id_avs in (select id_avs from avs where id_avs = '.$id.' and annee='.$annee.')';
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
+    }
+    function allListAVSParEtab(){
+      $req="SELECT E.*, GROUP_CONCAT(A.nom SEPARATOR ',') as listNomAVS, GROUP_CONCAT(A.id_avs SEPARATOR ',') as listIdAVS, GROUP_CONCAT(A.prenom SEPARATOR ',') as listPrenomAVS
+            FROM `etablissement` E
+            LEFT JOIN `gere` G ON G.id_etablissement = E.id_etablissement
+            LEFT JOIN `avs` A ON G.id_avs = A.id_avs
+            GROUP BY id_etablissement";
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
+    
+    function allListEleveParAVS($annee){
+      $req="SELECT A.*, GROUP_CONCAT(E.nom SEPARATOR ',') as listNomEleve, GROUP_CONCAT(E.prenom SEPARATOR ',') as listPrenomEleve 
+            FROM `avs` A
+            LEFT JOIN `eleve` E ON E.id_avs = A.id_avs
+            Where annee = ".$annee."
+            GROUP BY id_avs";
+      $rs = PdoExemple::$monPdo->query($req);
+      $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+      return $ligne;
+    }
 }
+
 
 ?>

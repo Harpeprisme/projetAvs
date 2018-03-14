@@ -4,7 +4,7 @@
     <head>
         <script type="text/javascript" src="library/jquery-3.2.1.min"></script>
         <link href='http://fonts.googleapis.com/css?family=Terminal+Dosis' rel='stylesheet' type='text/css' />
-        <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -22,13 +22,14 @@
         <link rel="stylesheet" type="text/css" href="styles/css_modifier.css" />
 
         <script type="text/javascript" src="js/js_ajouter.js"></script>
+        <script type="text/javascript" src="js/js_historique.js"></script>
         <script type="text/javascript" src="js/js_informations.js"></script>
         <script type="text/javascript" src="js/js_modifier.js"></script>
 
-        <title>Gestion des Avs</title>
+        
     </head>
     <body>
-
+ 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="index.php?do=accueil">Gestion des Avs</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +37,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav nav ">
-                    <a class="nav-item nav-link active" href="index.php?do=informations">Informations <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link " href="index.php?do=informations">Informations <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="index.php?do=ajouter">Ajouter</a>
                     <a class="nav-item nav-link" href="index.php?do=modifier">Modifier/Supprimer</a>
                     <a class="nav-item nav-link" href="index.php?do=historique">Historique</a>
