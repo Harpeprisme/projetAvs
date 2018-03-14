@@ -488,11 +488,6 @@ class PdoExemple {
         }
         return PdoExemple::$resultat;
     }
-<<<<<<< HEAD
-    
-
-    
-    
 
     public function deleteGereEtablissement($idEtablissement) {
 
@@ -564,8 +559,6 @@ class PdoExemple {
         return PdoExemple::$resultat;
     }
     
-    
-=======
 function listEleveParEtab($id){
       $req='SELECT *
       FROM eleve where id_eleve in (select id_eleve from appartient where id_etablissement = '.$id.')';
@@ -650,7 +643,7 @@ function listEleveParEtab($id){
         $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
         return $ligne;
     }
->>>>>>> 73c1d3ecbb79dcaa739218ec4f717e7388569700
+
 
     public function getEleveAVSParAnnee($id, $annee) {
         $req = 'SELECT * FROM eleve WHERE id_avs in (select id_avs from avs where id_avs = '.$id.' and annee='.$annee.')';
