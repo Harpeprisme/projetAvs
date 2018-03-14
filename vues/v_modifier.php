@@ -29,7 +29,7 @@
         <div class="row col"> 
 
             <div class ="col">
-                <input type="text" id="searchEtablissement" class="form-control" placeholder="search">
+                <input type="text" id="searchEtablissement" class="form-control" placeholder="Rechercher">
 
                 <select id="listeEtablissement" name="Etablissement[]"  onclick="afficherEtablissement()" multiple>
                     <?php
@@ -58,7 +58,7 @@
                     <input  class="col" type="text" id ="responsableEtablissement" name="responsableEtablissement" value="" required />
                 </div>
                 <div class="row">
-                    <input type="submit" class="form-control form-control-sm col" value="Supprimer" name="etablissement" />
+                    <input type="submit" class="form-control form-control-sm col" style="background-color: #dc3545;" value="Supprimer" name="etablissement" />
                     <input type="submit"  class="form-control form-control-sm col" value="Modifier" name="etablissement" />
                 </div>
             </div>
@@ -72,7 +72,7 @@
         <div class="row">   
             <div class ="col">
 
-                <input type="text"  class="form-control" id ="searchEleve" placeholder="Search">
+                <input type="text"  class="form-control" id ="searchEleve" placeholder="Rechercher">
 
                 <select id="listeEleve" name="Eleve[]" onclick="afficherEleve()" multiple>
                     <?php
@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="row">
-                    <input type="submit" class="form-control form-control-sm col" value="Supprimer" name="eleve" />
+                    <input type="submit" class="form-control form-control-sm col" style="background-color: #dc3545;" value="Supprimer" name="eleve" />
                     <input type="submit"  class="form-control form-control-sm col" value="Modifier" name="eleve" />
                 </div> 
             </div>
@@ -147,7 +147,7 @@
         <div class="row">   
             <div class ="col">
 
-                <input type="text" id="searchAvs" id="searchAvs" class="form-control" placeholder="Search">
+                <input type="text" id="searchAvs" id="searchAvs" class="form-control" placeholder="Rechercher">
 
                 <select  id="listeAVS" name="Avs[]" onclick="afficherAVS()" multiple>
                     <?php
@@ -196,7 +196,7 @@
                 </div>
 
                 <div class="row">
-                    <input type="submit" class="form-control form-control-sm col" value="Supprimer" name="AVS" />
+                    <input type="submit" class="form-control form-control-sm col" style="background-color: #dc3545;" value="Supprimer" name="AVS" />
                     <input type="submit"  class="form-control form-control-sm col" value="Modifier" name="AVS" />
                 </div> 
             </div>
