@@ -9,10 +9,6 @@
         <div class="col"></div>
     </div>
 
-
-
-   
-
     <div class="col row">
         <!--
         
@@ -39,7 +35,7 @@
 
         </div>
         <div class="col-sm-1">   
-            <span class="icon"><img src=http://constellations.pagesperso-orange.fr/Mes%20images/fl28.gif  width=60></span>
+<!--            <span class="icon"><img src=http://constellations.pagesperso-orange.fr/Mes%20images/fl28.gif  width=60></span>-->
         </div>
 
         <div class="col"></div>
@@ -76,7 +72,7 @@
         <div class="col-sm-1" id="ibAVS" name="col-AVS">
 
             <legend>
-                <span class="icon"><img src=http://constellations.pagesperso-orange.fr/Mes%20images/fl28.gif  width=60 alt="Responsive image"></span>
+                <!--<span class="icon"><img src=http://constellations.pagesperso-orange.fr/Mes%20images/fl28.gif  width=60 alt="Responsive image"></span>-->
 
             </legend>
         </div>

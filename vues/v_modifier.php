@@ -182,7 +182,7 @@
                 </div>
                 <div class="row">
                     <label class="col" for="eleveAVS">Elève assignés:</label>
-                    <select class="col" name="eleveAVS" id="eleveAVS" class="form-control" multiple >
+                    <select class="col" name="eleveAVS[]" id="eleveAVS" class="form-control" multiple >
                         <?php
                         if (isset($selectEleve)) {
                             for ($i = 0; $i < sizeof($selectEleve); $i++) {

@@ -48,7 +48,7 @@ switch ($action) {
             $idEleve = $_REQUEST['id_eleve'];
             $selectselectAppartientAjax = $pdo->selectAppartientAjax($idEleve);
             echo $selectselectAppartientAjax;
-            
+
             break;
         }
 
@@ -60,9 +60,9 @@ switch ($action) {
             echo $selectClasseAVSAjax;
 
             break;
-        } 
-        
-        case 'afficherEleveAvs': {
+        }
+
+    case 'afficherEleveAvs': {
             require_once("../modele/modele.inc.php");
             $pdo = PdoExemple::getPdoExemple();
             $idavs = $_REQUEST['id_avs'];
@@ -84,6 +84,8 @@ switch ($action) {
                 echo $result;
             } else {
 
+
+
                 $result = $pdo->deleteAppartientEtablissement($idEtablissement);
                 echo $result;
                 $result = $pdo->deleteGereEtablissement($idEtablissement);
@@ -103,6 +105,8 @@ switch ($action) {
         }
     case 'modifierEleve': {
 
+            //Ne modifie pas la classe et l'établissement 
+
             $idEleve = $_REQUEST['Eleve'][0];
             $nomEleve = $_REQUEST['nomEleve'];
             $prenomEleve = $_REQUEST['prenomEleve'];
@@ -118,14 +122,35 @@ switch ($action) {
 
                 $result = $pdo->updateEleve($idEleve, $nomEleve, $prenomEleve, $dateNaissanceEleve);
                 echo $result;
-                $result = $pdo->updateAppartient($idEleve, $etablissementEleve, $classeEleve);
-                echo $result;
+
+
+                /* Problème ici car on supprime les lignes dans gère et appartient 
+                  qui rattache l'élève
+                  Pour palier aux problèmes il faut recréer les lgnes appartient  et gere ou l'etab = new etab */
+
+
+
+
+                if ($pdo->selectEtablissementEleve($idEleve) == $etablissementEleve) {
+                    $result = $pdo->insertAppartient($etablissementEleve, $idEleve, $classeEleve);
+                    echo $result;
+                } else {
+                    $result = $pdo->updateAppartient($idEleve, $etablissementEleve, $classeEleve);
+                    echo $result;
+                }
+
                 $avs = $pdo->selectavsEleve($idEleve);
 
-                //Modifier l'AVS en fonction de l'établissement Gère
-                $result = $pdo->updateGere($avs, $etablissementEleve);
-                echo $result;
-                //Gere ne marche pas
+                if ($pdo->selectGereEtablissement($etablissementEleve) == $etablissementEleve) {
+                    $result = $pdo->insertGere($avs,$etablissementEleve);
+                    echo $result;
+                } else {
+                    $result = $pdo->updateGere($avs, $etablissementEleve);
+                    echo $result;
+                }
+                
+                //Fin Problème
+                
             } else {
 
                 $idClasse = $pdo->selectClasseEleve($idEleve);
@@ -151,13 +176,17 @@ switch ($action) {
         }
     case 'modifierAVS': {
 
+
+
             $idAVS = $_REQUEST['Avs'][0];
+
             $nomAVS = $_REQUEST['nomAVS'];
             $prenomAVS = $_REQUEST['prenomAVS'];
             $dateNaissanceAVS = $_REQUEST['dateNaissanceAVS'];
             $mailAVS = $_REQUEST['emailAVS'];
             if (isset($_REQUEST['eleveAVS'])) {
                 $eleveAVS = $_REQUEST['eleveAVS'];
+                var_dump($eleveAVS);
             }
 
 
@@ -167,16 +196,31 @@ switch ($action) {
                 echo $result;
                 $result = $pdo->updateAvsEleve($eleveAVS, $idAVS);
                 echo $result;
-                $idEtablissement = $pdo->selectEtablissementEleve($eleveAVS);
-
+                if (isset($_REQUEST['eleveAVS'])) {
+                    $idEtablissement = $pdo->selectEtablissementEleve($eleveAVS);
+                }
                 $result = $pdo->updateGere($idAVS, $idEtablissement);
                 echo $result;
             } else {
 
-                $result = $pdo->deleteGereEleve($idAVS);
+
+
+                $result = $pdo->deleteGereAVS($idAVS);
                 echo $result;
-                $result = $pdo->updateEleveAVS($eleveAVS, NULL);
-                echo $result;
+
+
+
+                var_dump($_REQUEST['eleveAVS']);
+                if (isset($_REQUEST['eleveAVS'])) {
+
+                    for ($i = 0; $i < sizeof($_REQUEST['eleveAVS']); $i++) {
+                        $result = $pdo->updateEleveAVS($_REQUEST['eleveAVS'][$i], NULL);
+                        echo $result;
+                    }
+                }
+
+
+
                 $result = $pdo->deleteAVS($idAVS);
                 echo $result;
             }
