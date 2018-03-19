@@ -63,7 +63,7 @@ switch ($action) {
         }
     case 'ajouterAVS': {
             $listEleve = $pdo->selectEleve();
-            $listEtab = $pdo->selectEtablissement(); // à enlever par la suite lors du blocage des radiosboutons
+            $listEtab = $pdo->selectEtablissement(); 
 
 
             $nomAVS = $_REQUEST['nomAVS'];
@@ -74,7 +74,7 @@ switch ($action) {
             $pdo->insertAVS($nomAVS, $prenomAVS, $date_NaissanceAVS, $mailAVS, $idEleve);
             $idMaxAvs = $pdo->selectMaxAVS();
 
-            //création de la boucle permettant de récuperer les elves par rapports aux avs
+            //création de la boucle permettant de récuperer les elèves par rapports aux avs
             if (isset($idEleve)) {
                 for ($i = 0; $i < sizeof($_REQUEST['eleveAssigneAVS']); $i++) {
                     //Insere les avs aux eleves sélectionnees

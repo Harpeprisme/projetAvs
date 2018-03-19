@@ -64,6 +64,16 @@ class PdoExemple {
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
         return $ligne['id_etablissement'];
     }
+    
+    public function selectGereEtablissement($etablissementEleve) {
+
+        $req = "SELECT id_etablissement from gere where id_etablissement =" . $etablissementEleve;
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        return $ligne['id_etablissement'];
+    }
+    
+    
 
     public function selectEtablissement() {
 
@@ -90,6 +100,7 @@ class PdoExemple {
         return $ligne;
     }
 
+    
     public function selectEleve() {
 
         $req = "SELECT `id_eleve`, `nom`, `prenom`, `date_naissance`, `id_avs` FROM `eleve`";
@@ -191,8 +202,7 @@ class PdoExemple {
         $req = "SELECT max(id_avs) as maxAvs from AVS";
         $rs = PdoExemple::$monPdo->query($req);
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
-        return $ligne[
-                'maxAvs'];
+        return $ligne['maxAvs'];
     }
 
     public function insertClasse($nomClasse) {
@@ -429,6 +439,10 @@ class PdoExemple {
         
     }
     
+
+    
+    
+    
     
 
     public function updateAppartient($idEleve, $etablissementEleve, $classeEleve) {
@@ -446,6 +460,10 @@ class PdoExemple {
         }
         return PdoExemple::$resultat;
     }
+    
+  
+    
+    
 
     public function deleteEtablissement($idEtablissement) {
 
@@ -503,7 +521,7 @@ class PdoExemple {
         return PdoExemple::$resultat;
     }
     
-    public function deleteGereEleve($idavs) {
+    public function deleteGereAVS($idavs) {
 
         $req = "DELETE FROM `gere` WHERE `id_avs` = :id_avs";
 

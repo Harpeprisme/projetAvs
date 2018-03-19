@@ -118,6 +118,7 @@ function afficherEleve() {
                     etablissementEleve.options[cptEtab] = new Option("Aucun Etablissement", "NULL");
 
                 }
+
                 etablissementEleve.value = "NULL";
             }
 
@@ -212,31 +213,29 @@ function afficherAVS() {
         }
     });
 
-//Ne marche pas Mais l'idée est là #3H00
-
-//else
-//        {
-//            option.removeAttr("selected");
-//        }
 
     if (vafficherEleve != "") {
 
         var eleveAVS = document.getElementById("eleveAVS");
 
         for (var i = 0; i < eleveAVS.length; i++) {
-
-            if (typeof vafficherEleve[i] != "undefined") {
-
-
-                var option = $('#eleveAVS option[value=' + vafficherEleve[i]['id_eleve'] + ']');
-
-                if (eleveAVS.options[i].value == vafficherEleve[i]['id_eleve'])
-                {
-                    option.attr("selected", "selected");
-                }
-
-            }
+           
+            eleveAVS.options[i].selected = false;
         }
+
+        for (var i = 0; i < eleveAVS.length ; i++) {
+
+            for (var j = 0; j < vafficherEleve.length ; j++) {
+
+                if (vafficherEleve[j]['id_eleve'] == eleveAVS.options[i].value) {
+                    
+                    eleveAVS.options[i].selected = true;
+                    
+                }
+            }
+
+        }
+
 
     } else {
         alert("Il n'y a pas d'élèves assignés");
