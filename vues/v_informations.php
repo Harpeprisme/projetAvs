@@ -46,6 +46,9 @@
                 foreach ($allListAVSParEtab as $value) {
                             //affiche les Etablissment
                         echo'<optgroup label='.$value['nom'].' id=' . $value['id_etablissement'] . ' value=' . $value['id_etablissement'] . '>';
+                         $listNomAVS = null;
+                         $listPrenomAVS = null;
+                         $listIdAVS = null;
                         if($value['listIdAVS'] != null){
                             $listNomAVS = explode(",", $value['listNomAVS']);
                             $listPrenomAVS = explode(",", $value['listPrenomAVS']);
