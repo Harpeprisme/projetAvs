@@ -40,7 +40,7 @@
 
            <!-- colonne etablissemrnt-->
            <div class="col" id="ibAVS" name="col-AVS">
-            <input type="text" id="searchEtablissement" class="form-control" placeholder="Search"> <!--INPUT-->
+            <input type="text" id="searchEtablissement" class="form-control" placeholder="Rechercher"> <!--INPUT-->
             <select id="allEtab" name="infoEtablissement" id="" size="20"  onClick="getEleveAVSParEtab();">
                 <?php
                 foreach ($allListAVSParEtab as $value) {
@@ -177,7 +177,7 @@
        <!-- colonne etablissemrnt-->
        <div class="col" id="ibAVS" name="col-AVS">
         
-        <input type="text" id="searchEtablissement" class="form-control" placeholder="Search"> <!--INPUT-->
+        <input type="text" id="searchEtablissement" class="form-control" placeholder="Rechercher"> <!--INPUT-->
  <select id="allAVS" name="nom" size="20" onClick="getEtabEleveParAVS()">
                             <?php
                             foreach ($listAVS as $avs) {
@@ -279,7 +279,7 @@ page informationELEVE
        <!-- colonne etablissemrnt-->
        <div class="col" id="ibAVS" name="col-AVS">
         
-        <input type="text" id="searchEtablissement" class="form-control" placeholder="Search"> <!--INPUT-->
+        <input type="text" id="searchEtablissement" class="form-control" placeholder="Rechercher"> <!--INPUT-->
  <select  name="infoEtablissement" id="allEleve" size="20"  onClick="getInfoAVSParEleve()">
                             <?php
                             foreach ($listEleve as $eleve) {

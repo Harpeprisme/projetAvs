@@ -7,7 +7,7 @@ and open the template in the editor.
     Created on : 31 janv. 2018, 20:47:09
     Author     : jujud
 */
-input[type=email],
+input[type=email],input[type=search],
 input[type=date],input[type=text], select {
     width: 100%;
     padding: 12px 20px;
