@@ -135,7 +135,7 @@
 
                 <div class="row">
                     <input type="submit" class="form-control form-control-sm col" style="background-color: #dc3545;" value="Supprimer" name="eleve" />
-                    <input type="submit"  class="form-control form-control-sm col" value="Modifier" name="eleve" />
+                    <input type="submit"  class="form-control form-control-sm col" value="Modifier" onSubmit="check();" name="eleve" />
                 </div> 
             </div>
         </div>

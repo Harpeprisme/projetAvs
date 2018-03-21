@@ -106,7 +106,8 @@ switch ($action) {
     case 'modifierEleve': {
 
             //Ne modifie pas la classe et l'établissement 
-
+        
+        
             $idEleve = $_REQUEST['Eleve'][0];
             $nomEleve = $_REQUEST['nomEleve'];
             $prenomEleve = $_REQUEST['prenomEleve'];
@@ -119,7 +120,9 @@ switch ($action) {
 
 
             if ($_REQUEST['eleve'] == 'Modifier') {
-
+                  
+               
+                
                 $result = $pdo->updateEleve($idEleve, $nomEleve, $prenomEleve, $dateNaissanceEleve);
                 echo $result;
 
@@ -128,29 +131,25 @@ switch ($action) {
                   qui rattache l'élève
                   Pour palier aux problèmes il faut recréer les lgnes appartient  et gere ou l'etab = new etab */
 
-
-
-
-                if ($pdo->selectEtablissementEleve($idEleve) == $etablissementEleve) {
+                if ($pdo->selectEtablissementEleve($idEleve) != $etablissementEleve) {
                     $result = $pdo->insertAppartient($etablissementEleve, $idEleve, $classeEleve);
                     echo $result;
                 } else {
                     $result = $pdo->updateAppartient($idEleve, $etablissementEleve, $classeEleve);
-                    echo $result;
+                     echo $result;
                 }
 
                 $avs = $pdo->selectavsEleve($idEleve);
 
                 if ($pdo->selectGereEtablissement($etablissementEleve) == $etablissementEleve) {
-                    $result = $pdo->insertGere($avs,$etablissementEleve);
+                    $result = $pdo->insertGere($avs, $etablissementEleve);
                     echo $result;
                 } else {
                     $result = $pdo->updateGere($avs, $etablissementEleve);
                     echo $result;
                 }
-                
+
                 //Fin Problème
-                
             } else {
 
                 $idClasse = $pdo->selectClasseEleve($idEleve);
@@ -186,21 +185,49 @@ switch ($action) {
             $mailAVS = $_REQUEST['emailAVS'];
             if (isset($_REQUEST['eleveAVS'])) {
                 $eleveAVS = $_REQUEST['eleveAVS'];
-                var_dump($eleveAVS);
             }
 
 
             if ($_REQUEST['AVS'] == 'Modifier') {
 
+
+
                 $result = $pdo->updateAVS($idAVS, $nomAVS, $prenomAVS, $dateNaissanceAVS, $mailAVS);
                 echo $result;
-                $result = $pdo->updateAvsEleve($eleveAVS, $idAVS);
-                echo $result;
-                if (isset($_REQUEST['eleveAVS'])) {
-                    $idEtablissement = $pdo->selectEtablissementEleve($eleveAVS);
+                $avsEleve = $pdo->selectEleve();
+
+
+//                    $result = $pdo->updateAvsEleve($allEleve, $idAVS);
+//                    echo $result;
+//                    //la
+//                    $result = $pdo->updateGere($idAVS, $idEtablissement);
+//                    echo $result;
+
+
+
+                for ($i = 0; $i < sizeof($avsEleve); $i++) {
+
+                    $pdo->updateEleveAVS($avsEleve[$i]['id_eleve']);
+                    $result = $pdo->deleteGereAVS($idAVS);
+                    var_dump($result);
                 }
-                $result = $pdo->updateGere($idAVS, $idEtablissement);
-                echo $result;
+
+                
+                    for ($i = 0; $i < sizeof($_REQUEST['eleveAVS']); $i++) {
+
+                        $result = $pdo->updateModifierEleve($_REQUEST['eleveAVS'][$i], $idAVS);
+                        
+                        $idEtablissement = $pdo->selectEtablissementEleve($_REQUEST['eleveAVS'][$i]);
+                      
+                        
+                        if($idEtablissement != NULL){
+                            
+                        $result = $pdo->insertGere($idAVS, $idEtablissement);
+                          
+                        }
+                        
+                    }
+                
             } else {
 
 

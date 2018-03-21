@@ -252,7 +252,15 @@ function afficherAVS() {
 
 }
 
-
+function check(){ 
+    
+    if( document.getElementById("classeEleve").value == "NULL" && document.getElementById("etablissementEleve").value == "NULL"){
+//         document.getElementById("modifierEleve").submit();
+          alert("Il faut obligatoirement remplir la classe ainsi que l'établissement");
+      }
+    
+    
+}
 
 
 

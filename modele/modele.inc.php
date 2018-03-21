@@ -59,9 +59,10 @@ class PdoExemple {
 
     public function selectEtablissementEleve($idEleve) {
 
-        $req = "SELECT id_etablissement from appartient where id_eleve =" . $idEleve;
+        $req = "SELECT id_etablissement from appartient where id_eleve = " . $idEleve." limit 1";
         $rs = PdoExemple::$monPdo->query($req);
         $ligne = $rs->fetch(PDO::FETCH_ASSOC);
+        
         return $ligne['id_etablissement'];
     }
     
@@ -142,6 +143,14 @@ class PdoExemple {
         $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
         $result = json_encode($ligne);
         return $result;
+    }
+    
+    public function selectEleveAVS($idavs) {
+
+        $req = "SELECT  * FROM `eleve` where id_avs = " . $idavs;
+        $rs = PdoExemple::$monPdo->query($req);
+        $ligne = $rs->fetchAll(PDO::FETCH_ASSOC);
+        return $ligne;
     }
 
     public function selectAVSAjax($idavs) {
@@ -385,6 +394,22 @@ class PdoExemple {
         }
         return PdoExemple::$resultat;
     }
+     
+    
+    public function updateModifierEleve($idEleve,$idAVS) {
+
+        $req = "UPDATE `eleve` SET `id_avs`= :idAVS WHERE `id_eleve`=:idEleve";
+
+        $prep = PdoExemple::$monPdo->prepare($req);
+        $prep->bindValue(':idEleve', $idEleve, PDO::PARAM_INT);
+        $prep->bindValue(':idAVS', $idAVS, PDO::PARAM_INT);
+        $prep->execute();
+
+        if ($prep->errorInfo()[1] != null) {
+            PdoExemple::$resultat = 0;
+        }
+        return PdoExemple::$resultat;
+    }
     
     public function updateAvsEleve($idEleve,$id_avs) {
 
@@ -400,6 +425,9 @@ class PdoExemple {
         }
         return PdoExemple::$resultat;
     }
+    
+    
+    
     
     public function updateAVS($idAVS,$nomAVS,$prenomAVS,$dateNaissanceAVS,$mailAVS){
         
