@@ -52,7 +52,6 @@ function affEtabInfo()
 }
 
 function changeSelectOption(param){
-    console.log('sekjfhzekngf');
     if(param == 'eleve'){
         document.getElementById('ibEleve').checked = true;
     } 
@@ -63,4 +62,35 @@ function changeSelectOption(param){
         document.getElementById('ibAVS').checked = true;
     }
     affEtabInfo();
-    }
+}
+
+
+function recherche() {
+
+
+    var Etablissements;
+    var vOptionSelected = encodeURIComponent(document.getElementById("listeEtablissement").options[document.getElementById("listeEtablissement").selectedIndex].value);
+
+
+    $.ajax({
+        type: 'GET',
+        url: "controleurs/c_informations.php?action=recherche&val=" + vOptionSelected,
+        timeout: 3000,
+        async: false,
+        dataType: 'json',
+        success: function (data)
+        {
+            vInfosEtablissement = data;
+        },
+        error: function () {
+            console.log("Erreur");
+        }
+    });
+
+    document.getElementById("nomEtablissement").value = vInfosEtablissement[0]['nom'];
+    document.getElementById("typeEtablissement").value = vInfosEtablissement[0]['type_etablissement'];
+    document.getElementById("responsableEtablissement").value = vInfosEtablissement[0]['responsable_etablissement'];
+
+
+
+}
