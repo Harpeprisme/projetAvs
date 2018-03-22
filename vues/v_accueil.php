@@ -3,7 +3,7 @@
     <div class="content">
 
         <ul class="ca-menu">
-            <li class="bg-black">
+            <li class="bg-dark">
                 <a href="index.php?do=informations">
                     <span class="ca-icon"><i class="fas fa-question"></i></span>
                     <div class="ca-content">
@@ -11,7 +11,7 @@
                     </div>
                 </a>
             </li>
-            <li class="bg-black">
+            <li class="bg-dark" >
                 <a href="index.php?do=ajouter">
                     <span class="ca-icon"><i class="fas fa-user-plus"></i></span>
                     <div class="ca-content">
@@ -19,7 +19,7 @@
                     </div>
                 </a>
             </li>
-            <li class="bg-black" >
+            <li class="bg-dark" >
                 <a href="index.php?do=modifier">
                     <span class="ca-icon"><i class="fas fa-edit"></i></span>
                     <div class="ca-content">
@@ -27,7 +27,7 @@
                     </div>
                 </a>
             </li>
-            <li class="bg-black">
+            <li class="bg-dark">
                 <a href="index.php?do=historique">
                     <span class="ca-icon"><i class="fas fa-history"></i></span>
                     <div class="ca-content">
@@ -39,6 +39,6 @@
         </ul>
     </div><!-- content -->
 </div>
-    
+
 </body>
 </html>
