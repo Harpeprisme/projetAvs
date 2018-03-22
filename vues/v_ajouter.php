@@ -13,16 +13,17 @@
         </div>
     </div>  
 
+    
     <div class="row">
         <div class ="col">   
         </div>
-        <div class ="col">
+        <div class ="col-5">
             <input  type="radio" name="rb" id="rbEtablissement" checked="true" onclick="affEtab();" />
-            <label class="radio"  for="rbEtablissement">Etablissement</label>   
+            <label class="radio"  for="rbEtablissement"><h4>Etablissement</h4></label>   
             <input   type="radio" name="rb" id="rbEleve" onclick="affEtab();"/>
-            <label class="radio"for="rbEleve">Eleve</label>     
+            <label class="radio"for="rbEleve"><h4>Eleve</h4></label>     
             <input type="radio" name="rb" id="rbAVS" onclick="affEtab();" />
-            <label class="radio"  for="rbAVS">AVS</label>
+            <label class="radio"  for="rbAVS"><h4>AVS</h4></label>
         </div>
         <div class="col">
         </div>
@@ -31,20 +32,19 @@
     <div class="row">   
         <div class ="col"></div>
         
-        <!--Page Etablissement -->
         <div class ="col">
             <form name="ajouterEtablissement"  id="ajouterEtablissement"  action="index.php?do=ajouter&action=ajouterEtablissement" method="POST">
-                <div class="form">
+                <div class="form-control">
                     <label for="nomEtablissement">Nom:</label>
                     <input type="text" name="nomEtablissement" value="" required/>
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="typeEtablissement">Type établissement:</label>
                     <input class="form-control" type="text" name="typeEtablissement" value="" required />
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="responsableEtablissement">Responsable:</label>
                     <input type="text" name="responsableEtablissement" value="" required />
                     <br>
@@ -55,27 +55,25 @@
                     </div>
                 </div>
             </form>
-            <!-- Fin ajout etablissement -->
-            
-             <!--Page Eleve -->
+
             <form name="ajouterEleve" id="ajouterEleve" style="display: none;" action="index.php?do=ajouter&action=ajouterEleve" method="POST">
-                <div class="form">
+                <div class="form-control">
                     <label for="nomEleve">Nom:</label>
                     <input type="text" name="nomEleve" value="" required />
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="prenomEleve">Prénom:</label>
                     <input type="text" name="prenomEleve" value="" required />
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="dateNaissanceEleve">Date de naissance:</label>
                     <br>
                     <input type="date" name="dateNaissanceEleve" value="" required/>
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="etablissementEleve">Etablissement:</label>
                     <select name="etablissementEleve" required >
                         <option>Choisir un établissement</option>
@@ -87,7 +85,7 @@
                     </select>
                     <br>
                 </div>
-                <div class="form"
+                <div class="form-control"
                      <label for="classeEleve">Classe:</label>
                     <input type="text" name="classeEleve" value="" required />
                     <br>
@@ -99,31 +97,29 @@
                 </div>
 
             </form>
-           <!-- Fin ajout etablissement -->  
-            
-            <!--Page AVS-->
+
             <form name="ajouterAVS" id="ajouterAVS" style="display: none;" action="index.php?do=ajouter&action=ajouterAVS" method="POST">
-                <div class="form">
+                <div class="form-control">
                     <label for="nomAVS">Nom:</label>
                     <input type="text" name="nomAVS" value="" required />
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="PrenomAVS">Prénom:</label>
                     <input type="text" name="PrenomAVS" value="" required />
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="dateNaissanceAVS">Date de naissance:</label>
                     <input type="date" name="dateNaissanceAVS" value="" required />
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="emailAVS">Email:</label>
                     <input type="email" name="emailAVS" value="" placeholder="xyz@gmail.com" required />
                     <br>
                 </div>
-                <div class="form">
+                <div class="form-control">
                     <label for="eleveAssigneAVS">Choisir un Elève:</label>
                     <select name="eleveAssigneAVS[]" id ="eleveAssigneAVS" class="form-control" multiple>
                         <?php
@@ -137,7 +133,6 @@
                     <br>
                     <br>
                 </div>
-                <!-- Fin ajout AVS --> 
                 <div class="col">
                     <div class="col"> 
                         <input type="submit" value="Sauvegarder" name="envoyerAVS" />
