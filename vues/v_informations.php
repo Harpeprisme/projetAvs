@@ -128,10 +128,10 @@
 
  <div class="row">
 
-    <label class="row">Liste des élèves:</label>
+    <label class="row">Liste des Etablissements:</label>
     
     <div class="col"></div>
-    <label class="row">Liste des Etablissements:</label>
+    <label class="row">Liste des Elèves:</label>
     
 </div>
 
@@ -284,9 +284,9 @@ page informationELEVE
                             <?php
                             foreach ($listEleve as $eleve) {
                                 if(isset($_GET['IdEleve']) && $eleve['id_eleve'] == $_GET['IdEleve']){
-                                    echo'<option id=' . $eleve['id_eleve'] . ' selected="selected" value=' . $eleve['id_eleve'] . '>' . $eleve['nom'] . '</option>';
+                                    echo'<option id=' . $eleve['id_eleve'] . ' selected="selected" value=' . $eleve['id_avs'] . '>' . $eleve['nom'] . '</option>';
                                 } else{
-                                    echo'<option id=' . $eleve['id_eleve'] . ' value=' . $eleve['id_eleve'] . '>' . $eleve['nom'] . '</option>';
+                                    echo'<option id=' . $eleve['id_eleve'] . ' value=' . $eleve['id_avs'] . '>' . $eleve['nom'] . '</option>';
                                 }
                             }
                             ?>
@@ -351,10 +351,10 @@ page informationELEVE
 
  <div class="row">
 
-    <label class="row">Liste des élèves:</label>
+    <label class="row">Liste des Etablissements:</label>
     
     <div class="col"></div>
-    <label class="row">Liste des Etablissements:</label>
+    <label class="row">Liste des Elèves:</label>
     
 </div>
 

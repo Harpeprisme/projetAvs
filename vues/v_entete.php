@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <script type="text/javascript" src="library/jquery-3.2.1.min"></script>
+        <script type="text/javascript" src="library/jquery-3.2.1.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Terminal+Dosis' rel='stylesheet' type='text/css' />
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
