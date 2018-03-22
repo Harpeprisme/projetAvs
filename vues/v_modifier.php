@@ -11,13 +11,13 @@
     <div class="row">
         <div class ="col">   
         </div>
-        <div class ="col">
+        <div class ="col-5">
             <input  type="radio" name="rb" id="rbEtablissement" checked="true" onclick="affEtabModif();" />
-            <label class="radio"  for="rbEtablissement">Etablissement</label>   
+            <label class="radio"  for="rbEtablissement"><h4>Etablissement</h4></label>   
             <input   type="radio" name="rb" id="rbEleve" onclick="affEtabModif();"/>
-            <label class="radio"for="rbEleve">Eleve</label>     
+            <label class="radio"for="rbEleve"><h4>Eleve</h4></label>     
             <input type="radio" name="rb" id="rbAVS" onclick="affEtabModif();" />
-            <label class="radio"  for="rbAVS">AVS</label>
+            <label class="radio"  for="rbAVS"><h4>AVS</h4></label>
         </div>
         <div class="col">
         </div>
@@ -46,15 +46,15 @@
 
             <div class="col-sm-9">
                 <div class="row ">
-                    <label class="col" for="nomEtablissement"> Nom:</label>
+                    <label class="col" for="nomEtablissement"> <h4>Nom:</h4></label>
                     <input  class="col" type="text" id="nomEtablissement" name="nomEtablissement" value="" required/>
                 </div>  
                 <div class=" row">
-                    <label class="col" for="typeEtablissement">Type établissement:</label>
+                    <label class="col" for="typeEtablissement"><h4>Type établissement:</h4></label>
                     <input  class="col" type="text" id="typeEtablissement" name="typeEtablissement" value="" required />
                 </div>
                 <div class="row">
-                    <label  class="col" for="responsableEtablissement">Responsable:</label>
+                    <label  class="col" for="responsableEtablissement"><h4>Responsable:</h4></label>
                     <input  class="col" type="text" id ="responsableEtablissement" name="responsableEtablissement" value="" required />
                 </div>
                 <div class="row">
@@ -91,20 +91,20 @@
 
             <div class="col-sm-9">
                 <div class="row">
-                    <label class="col" for="nomEleve"> Nom:</label>
+                    <label class="col" for="nomEleve"> <h4>Nom:</h4></label>
                     <input class="col" type="text" id="nomEleve" name="nomEleve" value="" required/>
                 </div>  
                 <div class="row">
-                    <label class="col" for="prenomEleve">Prenom:</label>
+                    <label class="col" for="prenomEleve"><h4>Prenom:</h4></label>
                     <input class="col" type="text" id="prenomEleve" name="prenomEleve" value="" required />
                 </div>
                 <div class="row">
-                    <label class="col" for="dateNaissanceEleve">Date de naissance:</label>
+                    <label class="col" for="dateNaissanceEleve"><h4>Date de naissance:</h4></label>
                     <input class="col"type="date" id="dateNaissanceEleve" name="dateNaissanceEleve" value="" required />
                 </div>
                 <div class="row">
 
-                    <label class="col" for="classeEleve">Classe:</label>
+                    <label class="col" for="classeEleve"><h4>Classe:</h4></label>
                     <select class="col" name="classeEleve" id="classeEleve" required>
                         <?php
                         if (isset($selectClasse)) {
@@ -119,7 +119,7 @@
                     </select>
                 </div>
                 <div class="row">
-                    <label class="col" for="etablissementEleve">Etablissement élève:</label>
+                    <label class="col" for="etablissementEleve"><h4>Etablissement élève:</h4></label>
                     <select class="col" name="etablissementEleve" id="etablissementEleve" >
                         <?php
                         if (isset($selectEtablissement)) {
@@ -165,23 +165,23 @@
 
             <div class="col-sm-9">
                 <div class="row ">
-                    <label class="col" for="nomAVS"> Nom:</label>
+                    <label class="col" for="nomAVS"> <h4>Nom:</h4></label>
                     <input class="col" type="text" id="nomAVS" name="nomAVS" value="" required/>
                 </div>  
                 <div class=" row">
-                    <label class="col" for="prenomAVS">Prénom:</label>
+                    <label class="col" for="prenomAVS"><h4>Prénom:</h4></label>
                     <input class="col" type="text" id="prenomAVS" name="prenomAVS"  value="" required />
                 </div>
                 <div class="row">
-                    <label class="col"  for="dateNaissanceAVS">Date de naissance:</label>
+                    <label class="col"  for="dateNaissanceAVS"><h4>Date de naissance:</h4></label>
                     <input class="col"  type="date" id="dateNaissanceAVS" name="dateNaissanceAVS" value="" required />
                 </div>
                 <div class="row">
-                    <label class="col"  for="emailAVS">Email:</label>
+                    <label class="col"  for="emailAVS"><h4>Email:</h4></label>
                     <input class="col"  type="email" id="emailAVS" name="emailAVS"  value="" required />
                 </div>
                 <div class="row">
-                    <label class="col" for="eleveAVS">Elève assignés:</label>
+                    <label class="col" for="eleveAVS"><h4>Elève assignés:</h4></label>
                     <select class="col" name="eleveAVS[]" id="eleveAVS" class="form-control" multiple >
                         <?php
                         if (isset($selectEleve)) {
