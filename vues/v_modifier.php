@@ -47,15 +47,15 @@
 
             <div class="col-sm-9">
                 <div class="row ">
-                    <label class="col" for="nomEtablissement"> Nom:</label>
+                    <label class="col" for="nomEtablissement"><h4> Nom: </h4></label>
                     <input  class="col" type="text" id="nomEtablissement" name="nomEtablissement" value="" required/>
                 </div>  
                 <div class=" row">
-                    <label class="col" for="typeEtablissement">Type établissement:</label>
+                    <label class="col" for="typeEtablissement"> <h4>Type établissement: </h4></label>
                     <input  class="col" type="text" id="typeEtablissement" name="typeEtablissement" value="" required />
                 </div>
                 <div class="row">
-                    <label  class="col" for="responsableEtablissement">Responsable:</label>
+                    <label  class="col" for="responsableEtablissement"> <h4> Responsable: </h4></label>
                     <input  class="col" type="text" id ="responsableEtablissement" name="responsableEtablissement" value="" required />
                 </div>
                 <div class="row">
