@@ -137,7 +137,7 @@
                         -2px 7px 2px rgba(0,0,0, 0.6),
                         -2px 7px 8px rgba(0,0,0, 0.2),
                         -2px 7px 45px rgba(0,0,0, 0.4);"> 
-                        Informations AVS
+                        Avs Responsable:
                     </h3>
                 </center>
                 <div class="row">  
@@ -352,7 +352,7 @@
                             -2px 6px 0 #B2B2B2,
                             -2px 7px 2px rgba(0,0,0, 0.6),
                             -2px 7px 8px rgba(0,0,0, 0.2),
-                            -2px 7px 45px rgba(0,0,0, 0.4);"> Informations Elève:</h3></center>
+                            -2px 7px 45px rgba(0,0,0, 0.4);">Elève:</h3></center>
 
                 <div class="row">  
                     <label for="nomAvs"  class="row" ><h4>Nom:</h4></label> 

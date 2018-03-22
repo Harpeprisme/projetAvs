@@ -30,19 +30,34 @@
     </head>
     <body>
  
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.php?do=accueil">Gestion des Avs</a>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+            <a class="navbar-brand" href="index.php?do=accueil"><h3 style="color: #00A1E4;
+	font-size: 50px;
+	font-weight: normal;
+	text-align: center;
+	
+	text-shadow: 0 1px 0 #eee,
+             0 2px 0 #e5e5e5,
+             -1px 3px 0 blue,
+             -1px 4px 0 blue,
+             -2px 5px 0 blue,
+             -2px 6px 0 blue,
+             -2px 7px 2px rgba(0,0,0,0),
+             -2px 7px 8px rgba(0,0,0,0),
+             -2px 7px 45px rgba(0,0,0,0);">Gestion des Avs</h3></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav nav ">
-                    <a class="nav-item nav-link " href="index.php?do=informations">Informations <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="index.php?do=ajouter">Ajouter</a>
-                    <a class="nav-item nav-link" href="index.php?do=modifier">Modifier/Supprimer</a>
-                    <a class="nav-item nav-link" href="index.php?do=historique">Historique</a>
+                    <a class="nav-item nav-link text-white" href="index.php?do=informations">Informations <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link text-white" href="index.php?do=ajouter">Ajouter</a>
+                    <a class="nav-item nav-link text-white" href="index.php?do=modifier">Modifier/Supprimer</a>
+                    <a class="nav-item nav-link text-white" href="index.php?do=historique">Historique</a>
                 </div>
             </div>
+            <a href="index.php?do=accueil" style="float:right"><img src="https://dircom.univ-amu.fr/sites/dircom.univ-amu.fr/files/logo_feg.png" style="float:left;width: 270px;"></a>
+           
         </nav>
 
 
