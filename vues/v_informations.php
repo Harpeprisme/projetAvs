@@ -14,20 +14,22 @@
     </div>
 
 
-    <div class="row">
-        <div class ="col">   
-        </div>
-        <div class ="col">
-            <input type="radio" name="rb" id="ibEtablissement" <?php if ($paramSelect == 'etab' ) echo 'checked="checked"' ; ?> onclick="affEtabInfo();"/>
-            <label class="radio"  for="ibEtablissement">Etablissement</label>
-            <input   type="radio" name="rb" id="ibEleve" <?php if ($paramSelect == 'eleve' ) echo 'checked="checked"' ; ?>  onclick="affEtabInfo();" />
-            <label class="radio"for="ibEleve">Eleve</label>
-            <input type="radio" name="rb" id="ibAVS" <?php if ($paramSelect == 'avs' ) {echo 'checked="checked"' ;} ?> onclick="affEtabInfo();"/>
-            <label class="radio"  for="ibAVS">AVS</label>
-        </div>
-        <div class="col">
-        </div>
+   <div class="row">
+    <div class="col">
+     
     </div>
+    <div class="col-5">
+      <input type="radio" name="rb" id="ibEtablissement" <?php if ($paramSelect == 'etab' ) echo 'checked="checked"' ; ?> onclick="affEtabInfo();"/>
+            <label class="radio"  for="ibEtablissement"><h4>Etablissement</h4></label>
+            <input   type="radio" name="rb" id="ibEleve" <?php if ($paramSelect == 'eleve' ) echo 'checked="checked"' ; ?>  onclick="affEtabInfo();" />
+            <label class="radio"for="ibEleve"><h4>Eleve</h4></label>
+            <input type="radio" name="rb" id="ibAVS" <?php if ($paramSelect == 'avs' ) {echo 'checked="checked"' ;} ?> onclick="affEtabInfo();"/>
+            <label class="radio"  for="ibAVS"><h4>AVS</h4></label>
+    </div>
+    <div class="col">
+    
+    </div>
+  </div>
 
 
     <!--***********************************************page informationEtablissement********************************-->
