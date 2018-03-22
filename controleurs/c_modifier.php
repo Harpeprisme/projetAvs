@@ -209,7 +209,7 @@ switch ($action) {
 
                     $pdo->updateEleveAVS($avsEleve[$i]['id_eleve']);
                     $result = $pdo->deleteGereAVS($idAVS);
-                    var_dump($result);
+                   echo $result;
                 }
 
                 
@@ -235,9 +235,6 @@ switch ($action) {
                 $result = $pdo->deleteGereAVS($idAVS);
                 echo $result;
 
-
-
-                var_dump($_REQUEST['eleveAVS']);
                 if (isset($_REQUEST['eleveAVS'])) {
 
                     for ($i = 0; $i < sizeof($_REQUEST['eleveAVS']); $i++) {
