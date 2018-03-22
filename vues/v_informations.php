@@ -222,22 +222,34 @@
 
  <div class="col-sm-4"> </div>
  <div class="col">
- <center><h3> Avs Responsable:</h3></center>
+ <center><h3 style="color: black;
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 1px 0 #eee,
+             0 2px 0 #e5e5e5,
+             -1px 3px 0 #C8C8C8,
+             -1px 4px 0 #C1C1C1,
+             -2px 5px 0 #B9B9B9,
+             -2px 6px 0 #B2B2B2,
+             -2px 7px 2px rgba(0,0,0, 0.6),
+             -2px 7px 8px rgba(0,0,0, 0.2),
+             -2px 7px 45px rgba(0,0,0, 0.4);"> Avs Responsable:</h3></center>
 
      <div class="row">  
-        <label for="nomAvs"  class="row" >Nom:</label> 
+        <label for="nomAvs"  class="row" ><h4>Nom:</h4></label> 
         <label for="nomAvs" class="row" ><?php if(isset($infoAVS2))echo $infoAVS2['nom'];?></label> 
     </div>
     <div class="row ">  
-        <label for="prenomAvs"  class="row" >Prénom:</label>
+        <label for="prenomAvs"  class="row" ><h4>Prénom:</h4></label>
         <label for="prenomAvs"  class="row"> <?php if(isset($infoAVS2))echo $infoAVS2['prenom'];?></label>
     </div>
     <div class="row ">  
-        <label for="date_naissanceAvs"  class="row" >Date de naissance :</label>
+        <label for="date_naissanceAvs"  class="row" ><h4>Date de naissance :</h4></label>
         <label for="date_naissanceAvs"  class="row" ><?php if(isset($infoAVS2))echo $infoAVS2['date_naissance'];?></label>
     </div>
     <div class="row">  
-     <label for="mailAvs"  class="row">Email:</label>  
+     <label for="mailAvs"  class="row"><h4>Email:</h4></label>  
      <label for="mailAvs"  class="row" ><?php if(isset($infoAVS2))echo $infoAVS2['mail'];?></label> 
  </div>
      
@@ -247,10 +259,10 @@
 
  <div class="row">
 
-    <label class="row">Liste des Etablissements:</label>
+    <label class="row"><h6>Liste des Etablissements:</h6></label>
     
     <div class="col"></div>
-    <label class="row">Liste des Eleves:</label>
+    <label class="row"><h6>Liste des Eleves:</h6></label>
     
 </div>
 
@@ -324,26 +336,38 @@ page informationELEVE
 
  <div class="col-sm-4"> 
 
-<center><h3>Elève:</h3></center>
+<center><h3 style="color: black;
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 1px 0 #eee,
+             0 2px 0 #e5e5e5,
+             -1px 3px 0 #C8C8C8,
+             -1px 4px 0 #C1C1C1,
+             -2px 5px 0 #B9B9B9,
+             -2px 6px 0 #B2B2B2,
+             -2px 7px 2px rgba(0,0,0, 0.6),
+             -2px 7px 8px rgba(0,0,0, 0.2),
+             -2px 7px 45px rgba(0,0,0, 0.4);">Elève:</h3></center>
 
      <div class="row">  
-        <label for="nomAvs"  class="row" >Nom:</label> 
+        <label for="nomAvs"  class="row" ><h4>Nom:</h4></label> 
         <label for="nomAvs" class="row" ><?php if(isset($infoEleve))echo $infoEleve['nom'];?></label> 
     </div>
     <div class="row ">  
-        <label for="prenomAvs"  class="row" >Prénom:</label>
+        <label for="prenomAvs"  class="row" ><h4>Prénom:</h4></label>
         <label for="prenomAvs"  class="row"> <?php if(isset($infoEleve))echo $infoEleve['prenom'];?></label>
     </div>
     <div class="row ">  
-        <label for="date_naissanceAvs"  class="row" >Date de naissance :</label>
+        <label for="date_naissanceAvs"  class="row" ><h4>Date de naissance :</h4></label>
         <label for="date_naissanceAvs"  class="row" ><?php if(isset($infoEleve))echo $infoEleve['date_naissance'];?></label>
     </div>
     <div class="row">  
-     <label for="Etablissement"  class="row">Etablissement:</label>  
+     <label for="Etablissement"  class="row"><h4>Etablissement:</h4></label>  
      <label for="Etablissement"  class="row" ><?php if(isset($EtabEleve))echo $EtabEleve['nom'];?></label> 
  </div>
     <div class="row">  
-     <label for="Classe"  class="row">Classe:</label>  
+     <label for="Classe"  class="row"><h4>Classe:</h4></label>  
      <label for="Classe"  class="row" ><?php if(isset($ClasseEleve))echo $ClasseEleve['nom'];?></label> 
  </div>
 
@@ -353,22 +377,34 @@ page informationELEVE
  <div class="col">
 
 
- <center><h3> Avs Responsable:</h3></center>
+ <center><h3 style="color: black;
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 1px 0 #eee,
+             0 2px 0 #e5e5e5,
+             -1px 3px 0 #C8C8C8,
+             -1px 4px 0 #C1C1C1,
+             -2px 5px 0 #B9B9B9,
+             -2px 6px 0 #B2B2B2,
+             -2px 7px 2px rgba(0,0,0, 0.6),
+             -2px 7px 8px rgba(0,0,0, 0.2),
+             -2px 7px 45px rgba(0,0,0, 0.4);"> Avs Responsable:</h3></center>
 
      <div class="row">  
-        <label for="nomAvs"  class="row" >Nom:</label> 
+        <label for="nomAvs"  class="row" ><h4>Nom:</h4></label> 
         <label for="nomAvs" class="row" ><?php if(isset($infoAVS3))echo $infoAVS3['nom'];?></label> 
     </div>
     <div class="row ">  
-        <label for="prenomAvs"  class="row" >Prénom:</label>
+        <label for="prenomAvs"  class="row" ><h4>Prénom:</h4></label>
         <label for="prenomAvs"  class="row"> <?php if(isset($infoAVS3))echo $infoAVS3['prenom'];?></label>
     </div>
     <div class="row ">  
-        <label for="date_naissanceAvs"  class="row" >Date de naissance :</label>
+        <label for="date_naissanceAvs"  class="row" ><h4>Date de naissance :</h4></label>
         <label for="date_naissanceAvs"  class="row" ><?php if(isset($infoAVS3))echo $infoAVS3['date_naissance'];?></label>
     </div>
     <div class="row">  
-     <label for="mailAvs"  class="row">Email:</label>  
+     <label for="mailAvs"  class="row"><h4>Email:</h4></label>  
      <label for="mailAvs"  class="row" ><?php if(isset($infoAVS3))echo $infoAVS3['mail'];?></label> 
  </div>
      
@@ -378,10 +414,10 @@ page informationELEVE
 
  <div class="row">
 
-    <label class="row">Liste des élèves:</label>
+    <label class="row"><h6>Liste des élèves:</h6></label>
     
     <div class="col"></div>
-    <label class="row">Liste des Etablissements:</label>
+    <label class="row"><h6>Liste des Etablissements:</h6></label>
     
 </div>
 
