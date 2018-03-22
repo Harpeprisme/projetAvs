@@ -13,21 +13,23 @@
         </div>
     </div>
 
-
-    <div class="row">
-        <div class ="col">   
-        </div>
-        <div class ="col">
-            <input type="radio" name="rb" id="ibEtablissement" <?php if ($paramSelect == 'etab' ) echo 'checked="checked"' ; ?> onclick="affEtabInfo();"/>
-            <label class="radio"  for="ibEtablissement">Etablissement</label>
-            <input   type="radio" name="rb" id="ibEleve" <?php if ($paramSelect == 'eleve' ) echo 'checked="checked"' ; ?>  onclick="affEtabInfo();" />
-            <label class="radio"for="ibEleve">Eleve</label>
-            <input type="radio" name="rb" id="ibAVS" <?php if ($paramSelect == 'avs' ) {echo 'checked="checked"' ;} ?> onclick="affEtabInfo();"/>
-            <label class="radio"  for="ibAVS">AVS</label>
-        </div>
-        <div class="col">
-        </div>
+<div class="row">
+    <div class="col">
+     
     </div>
+    <div class="col-5">
+      <input type="radio" name="rb" id="ibEtablissement" <?php if ($paramSelect == 'etab' ) echo 'checked="checked"' ; ?> onclick="affEtabInfo();"/>
+            <label class="radio"  for="ibEtablissement"><h4>Etablissement</h4></label>
+            <input   type="radio" name="rb" id="ibEleve" <?php if ($paramSelect == 'eleve' ) echo 'checked="checked"' ; ?>  onclick="affEtabInfo();" />
+            <label class="radio"for="ibEleve"><h4>Eleve</h4></label>
+            <input type="radio" name="rb" id="ibAVS" <?php if ($paramSelect == 'avs' ) {echo 'checked="checked"' ;} ?> onclick="affEtabInfo();"/>
+            <label class="radio"  for="ibAVS"><h4>AVS</h4></label>
+    </div>
+    <div class="col">
+    
+    </div>
+  </div>
+    
 
 
     <!--***********************************************page informationEtablissement********************************-->
@@ -40,15 +42,12 @@
 
            <!-- colonne etablissemrnt-->
            <div class="col" id="ibAVS" name="col-AVS">
-            <input type="text" id="searchEtablissement" class="form-control" placeholder="Rechercher"> <!--INPUT-->
+            <input type="text" id="searchEtablissement" class="form-control" placeholder="Search"> <!--INPUT-->
             <select id="allEtab" name="infoEtablissement" id="" size="20"  onClick="getEleveAVSParEtab();">
                 <?php
                 foreach ($allListAVSParEtab as $value) {
                             //affiche les Etablissment
                         echo'<optgroup label='.$value['nom'].' id=' . $value['id_etablissement'] . ' value=' . $value['id_etablissement'] . '>';
-                         $listNomAVS = null;
-                         $listPrenomAVS = null;
-                         $listIdAVS = null;
                         if($value['listIdAVS'] != null){
                             $listNomAVS = explode(",", $value['listNomAVS']);
                             $listPrenomAVS = explode(",", $value['listPrenomAVS']);
@@ -74,20 +73,32 @@
       <!-- colonne ELEVE-->
 
       <div name="col-ELEVE" class="col">
-        <center><h3>Informations</h3></center>
+        <center><h3 style="color: black;
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 1px 0 #eee,
+             0 2px 0 #e5e5e5,
+             -1px 3px 0 #C8C8C8,
+             -1px 4px 0 #C1C1C1,
+             -2px 5px 0 #B9B9B9,
+             -2px 6px 0 #B2B2B2,
+             -2px 7px 2px rgba(0,0,0, 0.6),
+             -2px 7px 8px rgba(0,0,0, 0.2),
+             -2px 7px 45px rgba(0,0,0, 0.4);">Etablissements</h3></center>
 
         <div class="row ">
-            <label class ="row" for="nomEtablissement">Nom:</label>
+            <label class ="row" for="nomEtablissement"><h4>Nom:</h4></label>
             <label class ="row" for="nomEtablissement"> <?php if(isset($infoEtab))echo $infoEtab['nom'];?></label>
         </div> 
 
         <div class="row">
-            <label class ="row" for="type_etablissement">Type d'établissement:</label>
+            <label class ="row" for="type_etablissement"><h4>Type d'établissement:</h4></label>
             <label class ="row" for="type_etablissement"> <?php if(isset($infoEtab))echo $infoEtab['type_etablissement'];?></label>
         </div> 
 
         <div class="row ">
-            <label class ="row" for="responsable_etablissement">Responsable:</label>
+            <label class ="row" for="responsable_etablissement"><h4>Responsable:</h4></label>
             <label class ="row" for="responsable_etablissement"><?php if(isset($infoEtab))echo $infoEtab['responsable_etablissement'];?></label>
         </div> 
 
@@ -107,31 +118,47 @@
 
     <div name="col-ELEVE" class="col">
 
-     <h3> Informations AVS </h3>
+        <center> 
+        <h3 style=" color: black;
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 1px 0 #eee,
+             0 2px 0 #e5e5e5,
+             -1px 3px 0 #C8C8C8,
+             -1px 4px 0 #C1C1C1,
+             -2px 5px 0 #B9B9B9,
+             -2px 6px 0 #B2B2B2,
+             -2px 7px 2px rgba(0,0,0, 0.6),
+             -2px 7px 8px rgba(0,0,0, 0.2),
+             -2px 7px 45px rgba(0,0,0, 0.4);">
+            AVS Résponsable 
+        </h3>
+        </center>
 
      <div class="row">  
-        <label for="nomEleve"  class="row" >Nom:</label> 
+        <label for="nomEleve"  class="row" ><h4>Nom:</h4></label> 
         <label for="nomEleve" class="row" ><?php if(isset($infoAVS))echo $infoAVS['nom'];?></label> 
     </div>
     <div class="row ">  
-        <label for="prenomEleve"  class="row" >Prénom:</label>
+        <label for="prenomEleve"  class="row" ><h4>Prénom:</h4></label>
         <label for="prenomEleve"  class="row"> <?php if(isset($infoAVS))echo $infoAVS['prenom'];?></label>
     </div>
     <div class="row ">  
-        <label for="date_naissanceEleve"  class="row" >Date de naissance :</label>
+        <label for="date_naissanceEleve"  class="row" ><h4>Date de naissance :</h4></label>
         <label for="date_naissanceEleve"  class="row" ><?php if(isset($infoAVS))echo $infoAVS['date_naissance']; ?> </label>
     </div>
     <div class="row">  
-     <label for="mailEleve"  class="row">Email:</label>  
+     <label for="mailEleve"  class="row"><h4>Email:</h4></label>  
      <label for="mailEleve"  class="row" ><?php if(isset($infoAVS))echo $infoAVS['mail'];?></label> 
  </div>
 
  <div class="row">
 
-    <label class="row">Liste des élèves:</label>
+    <label class="row"><h6>Liste des élèves:</h6></label>
     
     <div class="col"></div>
-    <label class="row">Liste des Etablissements:</label>
+    <label class="row"><h6>Liste des Etablissements:</h6></label>
     
 </div>
 
@@ -177,7 +204,7 @@
        <!-- colonne etablissemrnt-->
        <div class="col" id="ibAVS" name="col-AVS">
         
-        <input type="text" id="searchEtablissement" class="form-control" placeholder="Rechercher"> <!--INPUT-->
+        <input type="text" id="searchEtablissement" class="form-control" placeholder="Search"> <!--INPUT-->
  <select id="allAVS" name="nom" size="20" onClick="getEtabEleveParAVS()">
                             <?php
                             foreach ($listAVS as $avs) {
@@ -279,7 +306,7 @@ page informationELEVE
        <!-- colonne etablissemrnt-->
        <div class="col" id="ibAVS" name="col-AVS">
         
-        <input type="text" id="searchEtablissement" class="form-control" placeholder="Rechercher"> <!--INPUT-->
+        <input type="text" id="searchEtablissement" class="form-control" placeholder="Search"> <!--INPUT-->
  <select  name="infoEtablissement" id="allEleve" size="20"  onClick="getInfoAVSParEleve()">
                             <?php
                             foreach ($listEleve as $eleve) {
@@ -297,7 +324,7 @@ page informationELEVE
 
  <div class="col-sm-4"> 
 
-<center><h3> Informations Elève:</h3></center>
+<center><h3>Elève:</h3></center>
 
      <div class="row">  
         <label for="nomAvs"  class="row" >Nom:</label> 
