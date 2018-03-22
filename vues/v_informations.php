@@ -46,7 +46,9 @@
             <select id="allEtab" name="infoEtablissement" id="" size="20"  onClick="getEleveAVSParEtab();">
                 <?php
                 foreach ($allListAVSParEtab as $value) {
-                            //affiche les Etablissment
+                    $listNomAVS = null;
+                    $listPrenomAVS = null;
+                    $listIdAVS = null;
                         echo'<optgroup label='.$value['nom'].' id=' . $value['id_etablissement'] . ' value=' . $value['id_etablissement'] . '>';
                         if($value['listIdAVS'] != null){
                             $listNomAVS = explode(",", $value['listNomAVS']);
